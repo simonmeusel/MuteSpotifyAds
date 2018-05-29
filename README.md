@@ -19,7 +19,7 @@ This application is tested on macOS High Sierra (`10.13.4`) with Spotify `1.0.80
 
 ## How is it so efficent?
 
-Whenever the track changes, the following file will get modfied:
+Whenever the track changes, the following file will get modfied by Spotify:
 
 ```python
 # When a song plays next
@@ -42,6 +42,8 @@ To set and get the volume, the following apple script is used:
 tell application "Spotify" to (get sound volume)
 tell application "Spotify" to set sound volume to ($VOLUME)
 ```
+
+This application does not use any `hacks`, its simply acceses Spoitfies apple script API and look for file changes.
 
 ## Alternatives
 
