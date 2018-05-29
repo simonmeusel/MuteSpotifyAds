@@ -10,7 +10,7 @@ Instead of running Spotify direcly, start this application. It will automaticall
 
 ## Installation
 
-1. Download this application from the releases page
+1. Download this application from the [releases page](https://github.com/simonmeusel/MuteSpotifyAds/releases/)
 2. Move it to your Applications folder
 3. Run it using **Right Click -> Open**. You need to do this because [I don't pay Apple $99 every year](https://developer.apple.com/programs/).
 4. If you like the app, leave a [star](https://github.com/simonmeusel/MuteSpotifyAds/stargazers)!
