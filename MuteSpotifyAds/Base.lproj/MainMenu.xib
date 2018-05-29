@@ -19,6 +19,10 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="KUr-cl-g3N">
             <items>
+                <menuItem title="MuteSpotifyAds" id="Qme-N6-cSD">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="q9W-ox-c2F"/>
                 <menuItem title="Report a bug" id="95E-eS-QXO">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
