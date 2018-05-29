@@ -10,15 +10,23 @@
 		F321C45820B89BBF00C504CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321C45720B89BBF00C504CD /* AppDelegate.swift */; };
 		F321C45A20B89BC100C504CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F321C45920B89BC100C504CD /* Assets.xcassets */; };
 		F321C45D20B89BC100C504CD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F321C45B20B89BC100C504CD /* MainMenu.xib */; };
+		F336C09320BDA27E00C757DA /* SpotifyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336C09220BDA27E00C757DA /* SpotifyManager.swift */; };
+		F336C09520BDA34200C757DA /* StatusBarTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336C09420BDA34200C757DA /* StatusBarTitle.swift */; };
+		F3C10A6720BDB0510002A2B3 /* EonilFileSystemEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C10A6620BDB0510002A2B3 /* EonilFileSystemEvents.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F31C1A0C20B94FF000015294 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
 		F321C45420B89BBF00C504CD /* MuteSpotifyAds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuteSpotifyAds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F321C45720B89BBF00C504CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F321C45920B89BC100C504CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F321C45C20B89BC100C504CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		F321C45E20B89BC100C504CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F321C45F20B89BC100C504CD /* MuteSpotifyAds.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MuteSpotifyAds.entitlements; sourceTree = "<group>"; };
+		F336C09220BDA27E00C757DA /* SpotifyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyManager.swift; sourceTree = "<group>"; };
+		F336C09420BDA34200C757DA /* StatusBarTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarTitle.swift; sourceTree = "<group>"; };
+		F3C10A6620BDB0510002A2B3 /* EonilFileSystemEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EonilFileSystemEvents.framework; path = Carthage/Build/Mac/EonilFileSystemEvents.framework; sourceTree = "<group>"; };
+		F3C10A6920BDBA120002A2B3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,17 +34,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3C10A6720BDB0510002A2B3 /* EonilFileSystemEvents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F31C1A0B20B94FF000015294 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F3C10A6620BDB0510002A2B3 /* EonilFileSystemEvents.framework */,
+				F31C1A0C20B94FF000015294 /* AppleScriptObjC.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F321C44B20B89BBF00C504CD = {
 			isa = PBXGroup;
 			children = (
+				F3C10A6920BDBA120002A2B3 /* README.md */,
 				F321C45620B89BBF00C504CD /* MuteSpotifyAds */,
 				F321C45520B89BBF00C504CD /* Products */,
+				F31C1A0B20B94FF000015294 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +76,8 @@
 				F321C45B20B89BC100C504CD /* MainMenu.xib */,
 				F321C45E20B89BC100C504CD /* Info.plist */,
 				F321C45F20B89BC100C504CD /* MuteSpotifyAds.entitlements */,
+				F336C09220BDA27E00C757DA /* SpotifyManager.swift */,
+				F336C09420BDA34200C757DA /* StatusBarTitle.swift */,
 			);
 			path = MuteSpotifyAds;
 			sourceTree = "<group>";
@@ -70,6 +92,7 @@
 				F321C45020B89BBF00C504CD /* Sources */,
 				F321C45120B89BBF00C504CD /* Frameworks */,
 				F321C45220B89BBF00C504CD /* Resources */,
+				F3C10A6820BDB0970002A2B3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -92,6 +115,12 @@
 				TargetAttributes = {
 					F321C45320B89BBF00C504CD = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 0930;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -125,11 +154,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		F3C10A6820BDB0970002A2B3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/EonilFileSystemEvents.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/EonilFileSystemEvents.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F321C45020B89BBF00C504CD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F336C09320BDA27E00C757DA /* SpotifyManager.swift in Sources */,
+				F336C09520BDA34200C757DA /* StatusBarTitle.swift in Sources */,
 				F321C45820B89BBF00C504CD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,6 +232,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -243,6 +293,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -265,10 +316,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MuteSpotifyAds/MuteSpotifyAds.entitlements;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4Z9RUD85Z8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = MuteSpotifyAds/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -276,6 +331,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.simonmeusel.MuteSpotifyAds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -284,10 +340,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MuteSpotifyAds/MuteSpotifyAds.entitlements;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4Z9RUD85Z8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = MuteSpotifyAds/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
