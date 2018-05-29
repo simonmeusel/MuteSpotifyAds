@@ -57,7 +57,7 @@ I you want this functionality on Windows, I have found ***but not tested!*** the
 
 ### MacOS
 
-This application is a alternative to [Spotifree](https://github.com/ArtemGordinsky/Spotifree). [Spotifree](https://github.com/ArtemGordinsky/Spotifree) uses constant polling ever `0.3` seconds. This results in a CPU constant drain of around `4%` and a energy usage of about one fourth of the one from spotify.
+This application is a alternative to [Spotifree](https://github.com/ArtemGordinsky/Spotifree). [Spotifree](https://github.com/ArtemGordinsky/Spotifree) uses constant polling every `0.3` seconds. This results in a CPU constant drain of around `4%` and a energy usage of about one fourth of the one from spotify.
 
 Altough I created this application and had the idea to use apple script and file watching on my own, looking at the [Spotifree](https://github.com/ArtemGordinsky/Spotifree) source code gave me the idea of using the spotify url instead of the songs popularity (because the popularity is always 0 for ads).
 
