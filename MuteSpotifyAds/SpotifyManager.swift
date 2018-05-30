@@ -31,6 +31,8 @@ class SpotifyManager: NSObject {
         
         super.init()
         
+        startSpotify()
+        
         _ = trackChanged()
     }
     
@@ -56,12 +58,19 @@ class SpotifyManager: NSObject {
         }
     }
     
+    func startSpotify() {
+        _ = runAppleScript(script: "run application \"Spotify\"")
+    }
+    
     /**
      * Checks for ad
      *
      * Returns true if spotify got muted or unmuted, false otherwise
      */
     func trackChanged() -> Bool {
+        checkIfSpotifyIsRunning()
+        
+        
         if isSpotifyAdPlaying() {
             if !muted {
                 spotifyUserVolume = getSpotifyVolume()
@@ -94,7 +103,6 @@ class SpotifyManager: NSObject {
      */
     func getSpotifyVolume() -> Int {
         let volume = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "(get sound volume)")
-        print(volume)
         // Convert to number
         return Int(volume.split(separator: "\n")[0])!
     }
@@ -106,9 +114,9 @@ class SpotifyManager: NSObject {
      */
     func isSpotifyAdPlaying() -> Bool {
         let spotifyURL = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "(get spotify url of current track)")
-        print(spotifyURL)
         return spotifyURL.starts(with: "spotify:ad")
     }
+    
     /**
      * Runs the given apple script and passed logs to completion handler
      */
@@ -125,5 +133,15 @@ class SpotifyManager: NSObject {
         
         let data = pipe.fileHandleForReading.availableData
         return String(data: data, encoding: String.Encoding.utf8)!;
+    }
+    
+    /**
+     * Checks whether Spotify is running and terminates the application if it is closed
+     */
+    func checkIfSpotifyIsRunning() {
+        let running = NSRunningApplication.runningApplications(withBundleIdentifier: "com.spotify.client").count != 0
+        if (!running) {
+            NSApplication.shared.terminate(self)
+        }
     }
 }
