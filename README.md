@@ -45,17 +45,19 @@ tell application "Spotify" to set sound volume to ($VOLUME)
 
 Using those techniques, it uses only `0.4%` CPU when the track changes (rate: 5 seconds), and `0%` in idle. It has a energy impact of less than one tenth of spotify when the track changes, and a energy impact of `0.0 - 0.1` in idle.
 
-This application does not use any `hacks`, its simply acceses Spoitfies apple script API and look for file changes.
+This application does not use any `hacks`, its simply acceses Spotify's apple script API and look for file changes.
 
 ## Alternatives
 
 ### Linux
 
-I'm sorry for you and me 😢
+I you want this functionality on Linux, I have found ***but not tested!*** the following program:
+https://github.com/SecUpwN/Spotify-AdKiller
 
 ### Windows
 
-I you want this functionality on Windows, I have found ***but not tested!*** the following program: https://github.com/Xeroday/Spotify-Ad-Blocker/
+I you want this functionality on Windows, I have found ***but not tested!*** the following program:
+https://github.com/Xeroday/Spotify-Ad-Blocker/
 
 ### MacOS
 
