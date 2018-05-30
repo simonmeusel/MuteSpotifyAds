@@ -1,0 +1,28 @@
+os:
+  - osx
+
+language: swift
+
+before_install:
+  - brew update
+  - brew install carthage
+
+build:
+  - carthage build
+  - mkdir -p build
+  - rm -r build
+  - mkdir -p build
+  - mkdir -p build/archive
+  - mkdir -p build/export
+  - xcodebuild -scheme MuteSpotifyAds archive -archivePath build/archive/MuteSpotifyAds.xcarchive
+  - xcodebuild -exportArchive -exportPath build/export -archivePath build/archive/MuteSpotifyAds.xcarchive -exportOptionsPlist MuteSpotifyAds/Info.plist -project MuteSpotifyAds.xcodeproj
+before_deploy:
+  - zip -r build/export/MuteSpotifyAds.app.zip build/export/MuteSpotifyAds.app
+deploy:
+  provider: releases
+  api_key:
+    - secure: bnLiauu76sMA3Zoje8jfn0EL+k4D2kjLHaf8FzTZTpDSGOS3p7VF0tQ3Jit0IWgqp1nV9hYteATxpwbV26aT4skTfoxDMeXJ40NCZHt0ygQQgBIgKw2oxnS3XfQkkxAblaojK4UbCwA/mPmVS3ICf60lnuA1N7oPlOzp4GRoh5QDdhimFBfTMaqmqiiuo74WxFbHNvgq+kzn0D+wtblxqfMn3LGzz0dbnGnVa9Z3K97Vwh7aeUpOWJR5GTl08u9F//8WxNl10wb3rPGo4WUT48VGwY5RMSY2WWpKG8IgR6+4uW8eiwyREKTEHZ/qUhWfGNhFL/8VYM0xT/5RvvXls3h4kxwAmtddUtbrJYkvMIAt2D2D1urpEMvQa8Zz+Fc1VnLHnQlv2qLHE+kf8t7n/CPEGk+L5lQzZFtEnafxyP7v7fBBWoS+FvVmj2AcEMhQxFA1bR31artlHTV2g40RLmSBto/IemtgZjM9fvo8Jzvw1yXqFJqVKDHmiQFYU/r+wrQphsWj2hMQZsnrXEM1Dtn4Br0RbUBhy4S1Azx00GB4YJsdX+GThKYH9OlyCYfInSNatga4pLk160j4J2bGXKY1CBljkHLCNxZFlROFHF3tCJdS7l7hN+caLlSbDG/IhE/2hM62SINk9E2VcylrkQEJt2JL/DbjLhOMXYk/mN0=
+  file: build/export/MuteSpotifyAds.app.zip
+  skip_cleanup: true
+  on:
+    tags: true
