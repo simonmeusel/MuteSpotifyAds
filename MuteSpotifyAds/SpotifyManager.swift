@@ -59,7 +59,12 @@ class SpotifyManager: NSObject {
     }
     
     func startSpotify() {
-        _ = runAppleScript(script: "run application \"Spotify\"")
+        let process = Process();
+        // Open application with bundle identifier
+        process.launchPath = "/usr/bin/open"
+        process.arguments = ["-b", "com.spotify.client"]
+        process.launch()
+        process.waitUntilExit()
     }
     
     /**
