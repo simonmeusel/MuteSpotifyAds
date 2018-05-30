@@ -19,18 +19,27 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="KUr-cl-g3N">
             <items>
-                <menuItem title="MuteSpotifyAds" id="Qme-N6-cSD">
+                <menuItem title="☂︎ MuteSpotifyAds" id="Qme-N6-cSD">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="openProjectWebsite:" target="Voe-Tx-rLC" id="oYX-Ka-nYd"/>
+                    </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="q9W-ox-c2F"/>
-                <menuItem title="Report a bug" id="95E-eS-QXO">
+                <menuItem title="🔖 License" id="DTq-sR-yDf">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="openLicenseWebsite:" target="Voe-Tx-rLC" id="k4s-pD-3sK"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="🐛 Report a bug" id="95E-eS-QXO">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="openReportBugWebsite:" target="Voe-Tx-rLC" id="YMc-4Z-hHc"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="I4U-rl-Key"/>
-                <menuItem title="By Simon Meusel" id="IUf-ND-5vk">
+                <menuItem title="© Simon Meusel" id="IUf-ND-5vk">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="openSimonMeuselWebsite:" target="Voe-Tx-rLC" id="9SM-2J-gz9"/>

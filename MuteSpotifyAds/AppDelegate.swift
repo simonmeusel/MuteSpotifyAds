@@ -21,12 +21,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApplication.shared.terminate(self)
     }
     
+    @IBAction func openProjectWebsite(_ sender: Any) {
+        openWebsite(url: "https://github.com/simonmeusel/MuteSpotifyAds")
+    }
+    
     @IBAction func openReportBugWebsite(_ sender: Any) {
         openWebsite(url: "https://github.com/simonmeusel/MuteSpotifyAds/issues")
     }
     
     @IBAction func openSimonMeuselWebsite(_ sender: Any) {
         openWebsite(url: "https://simonmeusel.de")
+    }
+    
+    @IBAction func openLicenseWebsite(_ sender: Any) {
+        openWebsite(url: "https://www.gnu.org/licenses/gpl-3.0.txt")
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -52,15 +60,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let url = URL(string: url)
         NSWorkspace.shared.open(url!)
     }
-    
-    /*func fileChanged() {
-        for _ in 1...5 {
-            if trackChanged() {
-                break
-            }
-            sleep(300)
-        }
-    }*/
     
 }
 
