@@ -51,11 +51,13 @@ This application does not use any `hacks`, its simply acceses Spotify's apple sc
 
 ### Linux
 
-I'm sorry for you and me 😢
+I you want this functionality on Linux, I have found ***but not tested!*** the following program:
+https://github.com/SecUpwN/Spotify-AdKiller
 
 ### Windows
 
-I you want this functionality on Windows, I have found ***but not tested!*** the following program: https://github.com/Xeroday/Spotify-Ad-Blocker/
+I you want this functionality on Windows, I have found ***but not tested!*** the following program:
+https://github.com/Xeroday/Spotify-Ad-Blocker/
 
 ### MacOS
 
