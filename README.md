@@ -4,6 +4,8 @@ This is a efficent MacOS only application automatically silencing ads on the spo
 
 This application is very CPU and power efficent, since it only checks for an ad when a new song gets played.
 
+You can also enable a endless private spotify session, see below.
+
 ## Usage
 
 Instead of running Spotify direcly, start this application. It will automatically run Spotify. Furthermore it will mute any ads it sees. When you close Spotify this program will also terminate, and thus it no longer has any effect on your battery or CPU.
@@ -47,6 +49,25 @@ Using those techniques, it uses only `0.4%` CPU when the track changes (rate: 5 
 
 This application does not use any `hacks`, its simply acceses Spotify's apple script API and look for file changes.
 
+## Endless private session
+
+You can also use this application to enforce a endless private session. **This requires administrative privileges**. To enable them, go to `System Preferences` → `Security & Privacy` → `Privacy` tab → `Accessibility` → Click the checkmark next to this application.
+
+To enable/disable the endless private session, click the `☀︎` in the status bar of your mac, and then click `∞ Private session`. This will ensure that the spotify private session is enabled whenever the current song changes.
+
+This application enables the private session using [the following apple script](https://stackoverflow.com/a/51068836/6286431):
+
+```
+tell application "System Events" to tell process "Spotify"
+    tell menu bar item 2 of menu bar 1 -- AppleScript indexes are 1-based
+        tell menu item "Private Session" of menu 1
+            set isChecked to value of attribute "AXMenuItemMarkChar" is "✓"
+            if not isChecked then click it
+        end tell
+    end tell
+end tell
+```
+
 ## Alternatives
 
 ### Linux
@@ -65,7 +86,10 @@ This application is a alternative to [Spotifree](https://github.com/ArtemGordins
 
 Altough I created this application and had the idea to use apple script and file watching on my own, looking at the [Spotifree](https://github.com/ArtemGordinsky/Spotifree) source code gave me the idea of using the spotify url instead of the songs popularity (because the popularity is always 0 for ads).
 
-So thanks to Artem Gordinsky and the [other contributers](https://github.com/ArtemGordinsky/Spotifree#thanks) of [Spotifree](https://github.com/ArtemGordinsky/Spotifree)!
+## Thanks
+
+Thanks to [Artem Gordinsky](https://github.com/ArtemGordinsky/) and the [other contributers](https://github.com/ArtemGordinsky/Spotifree#thanks) of [Spotifree](https://github.com/ArtemGordinsky/Spotifree)!
+Thanks to [vadian](https://stackoverflow.com/users/5044042/vadian) for the [help](https://stackoverflow.com/questions/51068410/osx-tick-menu-bar-checkbox/51068836#51068836)!
 
 ## License
 
