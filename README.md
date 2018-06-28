@@ -1,5 +1,8 @@
 #  MuteSpotifyAds
 
+![size](https://img.shields.io/badge/size-10.5%20MB-brightgreen.svg)
+![download size](https://img.shields.io/badge/download%20size-3.1%20MB-brightgreen.svg)
+
 This is a efficent MacOS only application automatically silencing ads on the spotify desktop app.
 
 This application is very CPU and power efficent, since it only checks for an ad when a new song gets played.
@@ -17,7 +20,7 @@ Instead of running Spotify direcly, start this application. It will automaticall
 3. Run it using **Right Click -> Open**. You need to do this because [I don't pay Apple $99 every year](https://developer.apple.com/programs/).
 4. If you like the app, leave a [star](https://github.com/simonmeusel/MuteSpotifyAds/stargazers)!
 
-This application is tested on macOS High Sierra (`10.13.4`) with Spotify `1.0.80.474.gef6b503e`.
+This application is tested on macOS High Sierra (`10.13.5`) with Spotify `1.0.80.474.gef6b503e` to `1.0.83.318.g6c07039d`.
 
 ## How is it so efficent?
 
