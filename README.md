@@ -52,11 +52,13 @@ Using those techniques, it uses only `0.4%` CPU when the track changes (rate: 5 
 
 This application does not use any `hacks`, its simply acceses Spotify's apple script API and look for file changes.
 
-## Endless private session
+## Endless private spotify session
 
 You can also use this application to enforce a endless private session. **This requires administrative privileges**. To enable them, go to `System Preferences` → `Security & Privacy` → `Privacy` tab → `Accessibility` → Click the checkmark next to this application.
 
 To enable/disable the endless private session, click the `☀︎` in the status bar of your mac, and then click `∞ Private session`. This will ensure that the spotify private session is enabled whenever the current song changes.
+
+The state of the endless private session will be saved and restored on program restart.
 
 This application enables the private session using [the following apple script](https://stackoverflow.com/a/51068836/6286431):
 
