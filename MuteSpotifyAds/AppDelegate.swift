@@ -11,8 +11,10 @@ import Foundation
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    let endlessPrivateSessionKey = "EndlessPrivateSession"
     
     @IBOutlet weak var statusMenu: NSMenu!
+    @IBOutlet weak var endlessPrivateSessionCheckbox: NSMenuItem!
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var spotifyManager: SpotifyManager?;
@@ -37,6 +39,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         openWebsite(url: "https://www.gnu.org/licenses/gpl-3.0.txt")
     }
     
+    @IBAction func toggleEndlessPrivateSession(_ sender: NSMenuItem) {
+        if spotifyManager!.endlessPrivateSessionEnabled {
+            spotifyManager?.endlessPrivateSessionEnabled = false
+            UserDefaults.standard.set(false, forKey: endlessPrivateSessionKey)
+            spotifyManager?.disablePrivateSession()
+            sender.state = .off
+        } else {
+            spotifyManager?.endlessPrivateSessionEnabled = true
+            UserDefaults.standard.set(true, forKey: endlessPrivateSessionKey)
+            spotifyManager?.enablePrivateSession()
+            sender.state = .on
+        }
+    }
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         setStatusBarTitle(title: .noAd)
         statusItem.menu = statusMenu
@@ -46,6 +62,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.setStatusBarTitle(title: title)
         })
         spotifyManager?.startWatchingForFileChanges()
+        
+        if UserDefaults.standard.bool(forKey: endlessPrivateSessionKey) {
+            spotifyManager?.enablePrivateSession()
+            spotifyManager?.endlessPrivateSessionEnabled = true
+            endlessPrivateSessionCheckbox.state = .on
+        }
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

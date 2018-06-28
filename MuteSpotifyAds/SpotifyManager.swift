@@ -16,6 +16,8 @@ class SpotifyManager: NSObject {
     var titleChangeHandler: ((StatusBarTitle) -> Void)
     var monitor: FileSystemEventMonitor?
     
+    var endlessPrivateSessionEnabled = false
+    
     /**
      * Volume before mute, between 0 and 100
      */
@@ -68,6 +70,42 @@ class SpotifyManager: NSObject {
     }
     
     /**
+     * Enables private Spotify session
+     */
+    func enablePrivateSession() {
+        // See https://stackoverflow.com/questions/51068410/osx-tick-menu-bar-checkbox/51068836#51068836
+        let script = """
+            tell application \"System Events\" to tell process \"Spotify\"
+                tell menu bar item 2 of menu bar 1
+                    tell menu item \"Private Session\" of menu 1
+                        set isChecked to value of attribute \"AXMenuItemMarkChar\" is \"✓\"
+                        if not isChecked then click it
+                    end tell
+                end tell
+            end tell
+            """
+        _ = runAppleScript(script: script)
+    }
+    
+    /**
+     * Disables private Spotify session
+     */
+    func disablePrivateSession() {
+        // See https://stackoverflow.com/questions/51068410/osx-tick-menu-bar-checkbox/51068836#51068836
+        let script = """
+            tell application \"System Events\" to tell process \"Spotify\"
+                tell menu bar item 2 of menu bar 1
+                    tell menu item \"Private Session\" of menu 1
+                        set isChecked to value of attribute \"AXMenuItemMarkChar\" is \"✓\"
+                        if isChecked then click it
+                    end tell
+                end tell
+            end tell
+            """
+        _ = runAppleScript(script: script)
+    }
+    
+    /**
      * Checks for ad
      *
      * Returns true if spotify got muted or unmuted, false otherwise
@@ -75,6 +113,9 @@ class SpotifyManager: NSObject {
     func trackChanged() -> Bool {
         checkIfSpotifyIsRunning()
         
+        if endlessPrivateSessionEnabled {
+            enablePrivateSession()
+        }
         
         if isSpotifyAdPlaying() {
             if !muted {
@@ -149,4 +190,5 @@ class SpotifyManager: NSObject {
             NSApplication.shared.terminate(self)
         }
     }
+    
 }

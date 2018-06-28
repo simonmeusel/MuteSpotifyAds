@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -13,6 +13,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="MuteSpotifyAds" customModuleProvider="target">
             <connections>
+                <outlet property="endlessPrivateSessionCheckbox" destination="o3E-lf-Jhd" id="yKp-C1-PHU"/>
                 <outlet property="statusMenu" destination="KUr-cl-g3N" id="quZ-j6-rXq"/>
             </connections>
         </customObject>
@@ -23,6 +24,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="openProjectWebsite:" target="Voe-Tx-rLC" id="oYX-Ka-nYd"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="∞ Private session" id="o3E-lf-Jhd">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="toggleEndlessPrivateSession:" target="Voe-Tx-rLC" id="uR4-Ny-dNh"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="q9W-ox-c2F"/>
