@@ -113,9 +113,7 @@ class SpotifyManager: NSObject {
     func trackChanged() -> Bool {
         checkIfSpotifyIsRunning()
         
-        if endlessPrivateSessionEnabled {
-            enablePrivateSession()
-        }
+        var changed = false;
         
         if isSpotifyAdPlaying() {
             if !muted {
@@ -123,7 +121,7 @@ class SpotifyManager: NSObject {
                 setSpotifyVolume(volume: 0)
                 muted = true
                 titleChangeHandler(.ad)
-                return true;
+                changed = true;
             }
         } else {
             // Reactivate spotify if ad is done
@@ -134,10 +132,17 @@ class SpotifyManager: NSObject {
                 }
                 muted = false
                 titleChangeHandler(.noAd)
-                return true
+                changed = true;
             }
         }
-        return false
+        
+        sleep(1)
+        
+        if endlessPrivateSessionEnabled {
+            enablePrivateSession()
+        }
+        
+        return changed
     }
     
     func setSpotifyVolume(volume: Int) {
