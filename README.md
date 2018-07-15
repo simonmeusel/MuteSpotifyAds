@@ -20,7 +20,7 @@ Instead of running Spotify direcly, start this application. It will automaticall
 3. Run it using **Right Click -> Open**. You need to do this because [I don't pay Apple $99 every year](https://developer.apple.com/programs/).
 4. If you like the app, leave a [star](https://github.com/simonmeusel/MuteSpotifyAds/stargazers)!
 
-This application is tested on macOS High Sierra (`10.13.5`) with Spotify `1.0.80.474.gef6b503e` to `1.0.83.318.g6c07039d`.
+This application is tested on macOS High Sierra (`10.13.5`) with Spotify `1.0.85.257.g0f8531bd`.
 
 ## How is it so efficent?
 
