@@ -81,6 +81,11 @@ If you want to contribute, feel free to do so. If you need help, just open a iss
 
 You can also contribute by adding support for another language. To do so, clone the repo, and then follow the instruction from [this image](https://cdn-images-1.medium.com/max/1791/1*K2hxQs-c2Q8aZkgjCl6q4Q.png). Then add the translations and open a pull request.
 
+Currently supported languages are:
+
+* english
+* german
+
 ## Alternatives
 
 ### Linux
