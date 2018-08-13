@@ -60,7 +60,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Get application version
         let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"]!
-        titleMenuItem.title = "☂︎ MuteSpotifyAds v\(version)"
+        titleMenuItem.title = titleMenuItem.title + " v\(version)"
         
         spotifyManager = SpotifyManager(titleChangeHandler: {
             title in

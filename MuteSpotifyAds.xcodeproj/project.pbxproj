@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		F321C45820B89BBF00C504CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321C45720B89BBF00C504CD /* AppDelegate.swift */; };
 		F321C45A20B89BC100C504CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F321C45920B89BC100C504CD /* Assets.xcassets */; };
-		F321C45D20B89BC100C504CD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F321C45B20B89BC100C504CD /* MainMenu.xib */; };
 		F336C09320BDA27E00C757DA /* SpotifyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336C09220BDA27E00C757DA /* SpotifyManager.swift */; };
 		F336C09520BDA34200C757DA /* StatusBarTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336C09420BDA34200C757DA /* StatusBarTitle.swift */; };
+		F37277D2212203EC00CC05DB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F321C45B20B89BC100C504CD /* MainMenu.xib */; };
 		F3C10A6720BDB0510002A2B3 /* EonilFileSystemEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C10A6620BDB0510002A2B3 /* EonilFileSystemEvents.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +25,8 @@
 		F321C45F20B89BC100C504CD /* MuteSpotifyAds.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MuteSpotifyAds.entitlements; sourceTree = "<group>"; };
 		F336C09220BDA27E00C757DA /* SpotifyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyManager.swift; sourceTree = "<group>"; };
 		F336C09420BDA34200C757DA /* StatusBarTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarTitle.swift; sourceTree = "<group>"; };
+		F37277D4212203F500CC05DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		F37277D5212204FC00CC05DB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		F3C10A6620BDB0510002A2B3 /* EonilFileSystemEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EonilFileSystemEvents.framework; path = Carthage/Build/Mac/EonilFileSystemEvents.framework; sourceTree = "<group>"; };
 		F3C10A6920BDBA120002A2B3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,7 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F321C45A20B89BC100C504CD /* Assets.xcassets in Resources */,
-				F321C45D20B89BC100C504CD /* MainMenu.xib in Resources */,
+				F37277D2212203EC00CC05DB /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +192,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				F321C45C20B89BC100C504CD /* Base */,
+				F37277D4212203F500CC05DB /* en */,
+				F37277D5212204FC00CC05DB /* de */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -201,6 +205,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -262,6 +267,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
