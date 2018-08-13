@@ -15,6 +15,7 @@
             <connections>
                 <outlet property="endlessPrivateSessionCheckbox" destination="o3E-lf-Jhd" id="yKp-C1-PHU"/>
                 <outlet property="statusMenu" destination="KUr-cl-g3N" id="quZ-j6-rXq"/>
+                <outlet property="titleMenuItem" destination="Qme-N6-cSD" id="InN-nV-s8I"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -26,6 +27,7 @@
                         <action selector="openProjectWebsite:" target="Voe-Tx-rLC" id="oYX-Ka-nYd"/>
                     </connections>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="j8S-qT-8fQ"/>
                 <menuItem title="∞ Private session" id="o3E-lf-Jhd">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>

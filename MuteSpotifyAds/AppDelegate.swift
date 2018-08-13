@@ -14,6 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let endlessPrivateSessionKey = "EndlessPrivateSession"
     
     @IBOutlet weak var statusMenu: NSMenu!
+    @IBOutlet weak var titleMenuItem: NSMenuItem!
     @IBOutlet weak var endlessPrivateSessionCheckbox: NSMenuItem!
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -56,6 +57,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         setStatusBarTitle(title: .noAd)
         statusItem.menu = statusMenu
+        
+        // Get application version
+        let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"]!
+        titleMenuItem.title = "☂︎ MuteSpotifyAds v\(version)"
         
         spotifyManager = SpotifyManager(titleChangeHandler: {
             title in

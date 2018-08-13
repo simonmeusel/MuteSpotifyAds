@@ -27,6 +27,10 @@ class SpotifyManager: NSObject {
      * Whether spotify got muted
      */
     var muted = false;
+    /**
+     * TODO: Remove when spotify bug gets fixed
+     */
+    var adStuckTimer: Timer?;
     
     init(titleChangeHandler: @escaping ((StatusBarTitle) -> Void)) {
         self.titleChangeHandler = titleChangeHandler
@@ -126,6 +130,10 @@ class SpotifyManager: NSObject {
         } else {
             // Reactivate spotify if ad is done
             if muted {
+                if (adStuckTimer != nil) {
+                    adStuckTimer!.invalidate()
+                    adStuckTimer = nil
+                }
                 // Don't change volume if user manually changed it
                 if getSpotifyVolume() == 0 && spotifyUserVolume != 0 {
                     setSpotifyVolume(volume: spotifyUserVolume)
@@ -136,10 +144,22 @@ class SpotifyManager: NSObject {
             }
         }
         
-        sleep(1)
+        // TODO: Remove when spotify bug gets fixed
+        if muted && adStuckTimer == nil {
+            // Spotify bug workaround
+            // If ad gets stuck, pause and play
+            // TODO: Search for TODOs
+            adStuckTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) {
+                _ in
+                self.toggleSpotifyPlayPause()
+                self.toggleSpotifyPlayPause()
+            }
+        }
         
         if endlessPrivateSessionEnabled {
-            enablePrivateSession()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+                self.enablePrivateSession()
+            })
         }
         
         return changed
@@ -194,6 +214,17 @@ class SpotifyManager: NSObject {
         if (!running) {
             NSApplication.shared.terminate(self)
         }
+    }
+    
+    func toggleSpotifyPlayPause() {
+        _ = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "playpause")
+    }
+    
+    // TODO: Remove when spotify bug gets fixed
+    func getSpoitfyPlayerPosition() -> Double {
+        let playerPosition = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "(get player position)")
+        // Convert to number
+        return Double(playerPosition.split(separator: "\n")[0])!
     }
     
 }
