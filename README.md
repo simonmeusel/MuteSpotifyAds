@@ -24,7 +24,7 @@ This application is tested on macOS High Sierra (`10.13.5`) with Spotify `1.0.85
 
 ## How is it so efficent?
 
-> ⚠️ Because of a Spotify bug, pausing and playing a ad every 4 seconds is implemented. This requires polling, but only when ads actually play. This will be resolved when the Spotify bug gets fixed. See #3.
+> ⚠️ Because of a Spotify bug, pausing and playing a ad every 4 seconds is implemented. This requires polling, but only when ads actually play. This will be resolved when the Spotify bug gets fixed. See [#4](https://github.com/simonmeusel/MuteSpotifyAds/issues/4).
 
 Whenever the track changes, the following file will get modfied by Spotify:
 
