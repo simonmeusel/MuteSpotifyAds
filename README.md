@@ -4,11 +4,11 @@
 [![download size](https://img.shields.io/badge/download%20size-3.3%20MB-brightgreen.svg)](https://github.com/simonmeusel/MuteSpotifyAds/releases)
 [![macOS version support](https://img.shields.io/badge/macOS-10.12--10.13-brightgreen.svg)](https://github.com/simonmeusel/MuteSpotifyAds/releases)
 
-This is a native and efficient macOS application automatically silencing ads on the spotify desktop app.
+This is a native and efficient macOS application automatically silencing ads on the Spotify desktop app.
 
 This application is very CPU and power efficient, since it only checks for an ad when a new song gets played.
 
-You can also enable a endless private spotify session, see below.
+You can also enable a endless private Spotify session, see below.
 
 ## Usage
 
@@ -101,11 +101,11 @@ https://github.com/SecUpwN/Spotify-AdKiller
 I you want this functionality on Windows, I have found ***but not tested!*** the following program:
 https://github.com/Xeroday/Spotify-Ad-Blocker/
 
-### MacOS
+### macOS
 
-This application is a alternative to [Spotifree](https://github.com/ArtemGordinsky/Spotifree). [Spotifree](https://github.com/ArtemGordinsky/Spotifree) uses constant polling every `0.3` seconds. This results in a CPU constant drain of around `4%` and a energy usage of about one fourth of the one from spotify.
+This application is a alternative to [Spotifree](https://github.com/ArtemGordinsky/Spotifree). [Spotifree](https://github.com/ArtemGordinsky/Spotifree) uses constant polling every `0.3` seconds. This results in a CPU constant drain of around `4%` and a energy usage of about one fourth of the one from Spotify.
 
-Although I created this application and had the idea to use apple script and file watching on my own, looking at the [Spotifree](https://github.com/ArtemGordinsky/Spotifree) source code gave me the idea of using the spotify url instead of the songs popularity (because the popularity is always 0 for ads).
+Although I created this application and had the idea to use apple script and file watching on my own, looking at the [Spotifree](https://github.com/ArtemGordinsky/Spotifree) source code gave me the idea of using the Spotify url instead of the songs popularity (because the popularity is always 0 for ads).
 
 ## Thanks
 
