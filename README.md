@@ -4,6 +4,8 @@
 [![download size](https://img.shields.io/badge/download%20size-3.3%20MB-brightgreen.svg)](https://github.com/simonmeusel/MuteSpotifyAds/releases)
 [![macOS version support](https://img.shields.io/badge/macOS-10.12--10.14-brightgreen.svg)](https://github.com/simonmeusel/MuteSpotifyAds/releases)
 
+<p align="center"><img src="https://i.imgur.com/n12KjSw.png" height="200"></p>
+
 This is a native and efficient macOS application automatically silencing ads on the Spotify desktop app.
 
 This application is very CPU and power efficient, since it only checks for an ad when a new song gets played.
