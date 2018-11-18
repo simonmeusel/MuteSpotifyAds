@@ -12,10 +12,12 @@ import Foundation
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     let endlessPrivateSessionKey = "EndlessPrivateSession"
+    let restartToSkipAdsKey = "RestartToSkipAds"
     
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var titleMenuItem: NSMenuItem!
     @IBOutlet weak var endlessPrivateSessionCheckbox: NSMenuItem!
+    @IBOutlet weak var restartToSkipAdsCheckbox: NSMenuItem!
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var spotifyManager: SpotifyManager?;
@@ -41,6 +43,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func toggleEndlessPrivateSession(_ sender: NSMenuItem) {
+        spotifyManager!.restartSpotify()
+        
         if spotifyManager!.endlessPrivateSessionEnabled {
             spotifyManager?.endlessPrivateSessionEnabled = false
             UserDefaults.standard.set(false, forKey: endlessPrivateSessionKey)
@@ -50,6 +54,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             spotifyManager?.endlessPrivateSessionEnabled = true
             UserDefaults.standard.set(true, forKey: endlessPrivateSessionKey)
             spotifyManager?.enablePrivateSession()
+            sender.state = .on
+        }
+    }
+    
+    @IBAction func toggleRestartToSkipAds(_ sender: NSMenuItem) {
+        if spotifyManager!.restartToSkipAdsEnabled {
+            spotifyManager?.restartToSkipAdsEnabled = false
+            UserDefaults.standard.set(false, forKey: restartToSkipAdsKey)
+            sender.state = .off
+        } else {
+            spotifyManager?.restartToSkipAdsEnabled = true
+            UserDefaults.standard.set(true, forKey: restartToSkipAdsKey)
             sender.state = .on
         }
     }
@@ -73,10 +89,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             spotifyManager?.endlessPrivateSessionEnabled = true
             endlessPrivateSessionCheckbox.state = .on
         }
-    }
-    
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+        
+        if UserDefaults.standard.bool(forKey: restartToSkipAdsKey) {
+            spotifyManager?.restartToSkipAdsEnabled = true
+            restartToSkipAdsCheckbox.state = .on
+        }
     }
     
     func setStatusBarTitle(title: StatusBarTitle) {

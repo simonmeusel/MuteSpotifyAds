@@ -17,6 +17,7 @@ class SpotifyManager: NSObject {
     var monitor: FileSystemEventMonitor?
     
     var endlessPrivateSessionEnabled = false
+    var restartToSkipAdsEnabled = false
     
     /**
      * Volume before mute, between 0 and 100
@@ -27,6 +28,9 @@ class SpotifyManager: NSObject {
      * Whether spotify got muted
      */
     var muted = false;
+    
+    var isRestarting = false;
+    
     /**
      * TODO: Remove when spotify bug gets fixed
      */
@@ -115,17 +119,20 @@ class SpotifyManager: NSObject {
      * Returns true if spotify got muted or unmuted, false otherwise
      */
     func trackChanged() -> Bool {
-        checkIfSpotifyIsRunning()
+        self.checkIfSpotifyIsRunning()
         
         var changed = false;
         
         if isSpotifyAdPlaying() {
-            if !muted {
+            if !restartToSkipAdsEnabled && !muted {
                 spotifyUserVolume = getSpotifyVolume()
                 setSpotifyVolume(volume: 0)
                 muted = true
                 titleChangeHandler(.ad)
                 changed = true;
+            }
+            if restartToSkipAdsEnabled {
+                restartSpotify()
             }
         } else {
             // Reactivate spotify if ad is done
@@ -145,7 +152,7 @@ class SpotifyManager: NSObject {
         }
         
         // TODO: Remove when spotify bug gets fixed
-        if muted && adStuckTimer == nil {
+        if !restartToSkipAdsEnabled && muted && adStuckTimer == nil {
             // Spotify bug workaround
             // If ad gets stuck, pause and play
             // TODO: Search for TODOs
@@ -188,10 +195,21 @@ class SpotifyManager: NSObject {
         return spotifyURL.starts(with: "spotify:ad")
     }
     
+    func restartSpotify() {
+        isRestarting = true;
+        _ = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "quit")
+        startSpotify()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            self.toggleSpotifyPlayPause()
+            self.isRestarting = false
+        })
+    }
+    
     /**
      * Runs the given apple script and passed logs to completion handler
      */
     func runAppleScript(script: String) -> String {
+        self.checkIfSpotifyIsRunning()
         let process = Process();
         process.launchPath = "/usr/bin/osascript"
         process.arguments = ["-e", script]
@@ -210,6 +228,9 @@ class SpotifyManager: NSObject {
      * Checks whether Spotify is running and terminates the application if it is closed
      */
     func checkIfSpotifyIsRunning() {
+        if isRestarting {
+            return
+        }
         let running = NSRunningApplication.runningApplications(withBundleIdentifier: "com.spotify.client").count != 0
         if (!running) {
             NSApplication.shared.terminate(self)
@@ -219,12 +240,4 @@ class SpotifyManager: NSObject {
     func toggleSpotifyPlayPause() {
         _ = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "playpause")
     }
-    
-    // TODO: Remove when spotify bug gets fixed
-    func getSpoitfyPlayerPosition() -> Double {
-        let playerPosition = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "(get player position)")
-        // Convert to number
-        return Double(playerPosition.split(separator: "\n")[0])!
-    }
-    
 }
