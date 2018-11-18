@@ -200,8 +200,9 @@ class SpotifyManager: NSObject {
         _ = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "quit")
         startSpotify()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-            self.toggleSpotifyPlayPause()
+            self.spotifyPlay()
             DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                self.spotifyPlay()
                 self.isRestarting = false
             })
         })
@@ -241,5 +242,9 @@ class SpotifyManager: NSObject {
     
     func toggleSpotifyPlayPause() {
         _ = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "playpause")
+    }
+    
+    func spotifyPlay() {
+        _ = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "play")
     }
 }
