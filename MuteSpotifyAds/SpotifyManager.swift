@@ -201,7 +201,9 @@ class SpotifyManager: NSObject {
         startSpotify()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             self.toggleSpotifyPlayPause()
-            self.isRestarting = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                self.isRestarting = false
+            })
         })
     }
     
