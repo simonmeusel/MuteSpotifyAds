@@ -14,7 +14,9 @@ You can also enable a endless private Spotify session, see below.
 
 ## Usage
 
-Instead of running Spotify directly, start this application. It will automatically run Spotify. Furthermore it will mute any ads it sees. When you close Spotify this program will also terminate, and thus it no longer has any effect on your battery or CPU.
+Instead of running Spotify directly, start this application. It will automatically start Spotify. Furthermore it will mute any ads it sees. When you close Spotify this program will also terminate, and thus it no longer has any effect on your battery or CPU.
+
+Ad of version `1.5.0` you can also enable a option to automatically skip ads, by restarting Spoitify. Therefore, click the `☀︎` in the status bar of your mac (at the top of your screen), and then click `◎ Restart to skip ads`.
 
 ## Installation
 
@@ -26,6 +28,27 @@ Instead of running Spotify directly, start this application. It will automatical
 This application is tested on macOS High Sierra (`10.13.5`) with Spotify `1.0.85.257.g0f8531bd`.
 
 To uninstall the application, you can simply trash `MuteSpotifyAds.app`.
+
+## Endless private Spotify session
+
+You can also use this application to enforce a endless private session. **This requires administrative privileges**. To enable them, go to `System Preferences` → `Security & Privacy` → `Privacy` tab → `Accessibility` → Click the check mark next to this application.
+
+To enable/disable the endless private session, click the `☀︎` in the status bar of your mac (at the top of your screen), and then click `∞ Private session`. This will ensure that the Spotify private session is enabled whenever the current song changes.
+
+The state of the endless private session will be saved and restored on program restart.
+
+This application enables the private session using [the following apple script](https://stackoverflow.com/a/51068836/6286431):
+
+```
+tell application "System Events" to tell process "Spotify"
+tell menu bar item 2 of menu bar 1 -- AppleScript indexes are 1-based
+tell menu item "Private Session" of menu 1
+set isChecked to value of attribute "AXMenuItemMarkChar" is "✓"
+if not isChecked then click it
+end tell
+end tell
+end tell
+```
 
 ## How is it so efficient?
 
@@ -58,27 +81,6 @@ tell application "Spotify" to set sound volume to ($VOLUME)
 Using those techniques, it uses only `0.4%` CPU when the track changes (rate: 5 seconds), and `0%` in idle. It has a energy impact of less than one tenth of Spotify when the track changes, and a energy impact of `0.0 - 0.1` in idle.
 
 This application does not use any `hacks`, its simply accesses Spotify's apple script API and look for file changes.
-
-## Endless private Spotify session
-
-You can also use this application to enforce a endless private session. **This requires administrative privileges**. To enable them, go to `System Preferences` → `Security & Privacy` → `Privacy` tab → `Accessibility` → Click the check mark next to this application.
-
-To enable/disable the endless private session, click the `☀︎` in the status bar of your mac, and then click `∞ Private session`. This will ensure that the Spotify private session is enabled whenever the current song changes.
-
-The state of the endless private session will be saved and restored on program restart.
-
-This application enables the private session using [the following apple script](https://stackoverflow.com/a/51068836/6286431):
-
-```
-tell application "System Events" to tell process "Spotify"
-    tell menu bar item 2 of menu bar 1 -- AppleScript indexes are 1-based
-        tell menu item "Private Session" of menu 1
-            set isChecked to value of attribute "AXMenuItemMarkChar" is "✓"
-            if not isChecked then click it
-        end tell
-    end tell
-end tell
-```
 
 ## Contributing
 
