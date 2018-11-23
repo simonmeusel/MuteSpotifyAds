@@ -12,6 +12,8 @@ This application is very CPU and power efficient, since it only checks for an ad
 
 You can also enable a endless private Spotify session, see below.
 
+This application is not in any way affiliated with Spotify.
+
 ## Usage
 
 Instead of running Spotify directly, start this application. It will automatically start Spotify. Furthermore it will mute any ads it sees. When you close Spotify this program will also terminate, and thus it no longer has any effect on your battery or CPU.
@@ -29,9 +31,16 @@ This application is tested on macOS High Sierra (`10.13.5`) with Spotify `1.0.85
 
 To uninstall the application, you can simply trash `MuteSpotifyAds.app`.
 
+### Troubleshooting
+
+If the Application deos not work, follow the steps for enabling a endless private Spotify session.
+
 ## Endless private Spotify session
 
-You can also use this application to enforce a endless private session. **This requires administrative privileges**. To enable them, go to `System Preferences` → `Security & Privacy` → `Privacy` tab → `Accessibility` → Click the check mark next to this application.
+You can also use this application to enforce a endless private session. **This requires administrative privileges**. To enable them, do the following:
+
+1. Go to `System Preferences` → `Security & Privacy` → `Privacy` tab → `Accessibility` → Enable the check mark next to this application. 
+2. Go to `System Preferences` → `Security & Privacy` → `Privacy` tab → `Automation` → Enable the check marks next to this application (for `Spotify` and `System Events`).
 
 To enable/disable the endless private session, click the `☀︎` in the status bar of your mac (at the top of your screen), and then click `∞ Private session`. This will ensure that the Spotify private session is enabled whenever the current song changes.
 
