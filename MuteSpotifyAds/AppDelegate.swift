@@ -43,8 +43,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func toggleEndlessPrivateSession(_ sender: NSMenuItem) {
-        spotifyManager!.restartSpotify()
-        
         if spotifyManager!.endlessPrivateSessionEnabled {
             spotifyManager?.endlessPrivateSessionEnabled = false
             UserDefaults.standard.set(false, forKey: endlessPrivateSessionKey)
