@@ -27,7 +27,7 @@ As of version `1.5.0` you can also enable a option to automatically skip ads, by
 3. Run it using **Right Click -> Open**. You need to do this because [I don't pay Apple $99 every year](https://developer.apple.com/programs/).
 4. If you like the app, leave a [star](https://github.com/simonmeusel/MuteSpotifyAds/stargazers)!
 
-This application is tested on macOS High Sierra (`10.13.5`) and macOS Mojave (`10.14.1`) with Spotify `1.0.85.257.g0f8531bd` and `1.0.93.244.g1e3a05e7`.
+This application is tested on macOS High Sierra (`10.13.5`) and macOS Mojave (`10.14.1`) with Spotify `1.0.93.244.g1e3a05e7`.
 
 To uninstall the application, you can simply trash `MuteSpotifyAds.app`.
 
@@ -62,7 +62,7 @@ end tell
 ## How is it so efficient?
 
 > ⚠️ Because of a Spotify bug, pausing and playing an ad every 4 seconds is implemented. This requires polling, but only when ads actually play. This will be resolved when the Spotify bug gets fixed. See [#4](https://github.com/simonmeusel/MuteSpotifyAds/issues/4).
-> It works well if you use restart-spotify mode in v 1.5
+> This Spotify bug has no effect when using the restart-spotify mode in v 1.5
 
 Whenever the track changes, the following file will get modified by Spotify:
 
@@ -125,7 +125,7 @@ Although I created this application and had the idea to use apple script and fil
 
 Thanks to [Artem Gordinsky](https://github.com/ArtemGordinsky/) and the [other contributors](https://github.com/ArtemGordinsky/Spotifree#thanks) of [Spotifree](https://github.com/ArtemGordinsky/Spotifree)!
 Thanks to [vadian](https://stackoverflow.com/users/5044042/vadian) for the [help](https://stackoverflow.com/questions/51068410/osx-tick-menu-bar-checkbox/51068836#51068836)!
-Thanks to [BaldEagleX02](https://github.com/BaldEagleX02) for restart-spotify feature
+Thanks to [BaldEagleX02](https://github.com/BaldEagleX02) for the restart-spotify feature and help with the documentation!
 
 ## License
 
