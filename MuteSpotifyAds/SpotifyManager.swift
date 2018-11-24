@@ -17,7 +17,7 @@ class SpotifyManager: NSObject {
     var monitor: FileSystemEventMonitor?
     
     var endlessPrivateSessionEnabled = false
-    var restartToSkipAdsEnabled = false
+    var restartToSkipAdsEnabled = true
     
     /**
      * Volume before mute, between 0 and 100
