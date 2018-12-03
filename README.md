@@ -117,7 +117,7 @@ https://github.com/Xeroday/Spotify-Ad-Blocker/
 
 ### macOS
 
-This application is a alternative to [Spotifree](https://github.com/ArtemGordinsky/Spotifree). [Spotifree](https://github.com/ArtemGordinsky/Spotifree) uses constant polling every `0.3` seconds. This results in a CPU constant drain of around `4%` and a energy usage of about one fourth of the one from Spotify.
+This application is a alternative to [Spotifree](https://github.com/ArtemGordinsky/Spotifree). [Spotifree](https://github.com/ArtemGordinsky/Spotifree) uses constant polling every `0.3` seconds. This results in a constant CPU drain of around `4%` and a energy usage of about one fourth of the one from Spotify.
 
 Although I created this application and had the idea to use apple script and file watching on my own, looking at the [Spotifree](https://github.com/ArtemGordinsky/Spotifree) source code gave me the idea of using the Spotify url instead of the songs popularity (because the popularity is always 0 for ads).
 
