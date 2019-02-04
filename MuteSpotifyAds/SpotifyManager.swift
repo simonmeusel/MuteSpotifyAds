@@ -23,12 +23,14 @@ class SpotifyManager: NSObject {
      * Volume before mute, between 0 and 100
      */
     var spotifyUserVolume = 0;
-    
     /**
-     * Whether spotify got muted
+     * Whether spotify is being muted
      */
     var muted = false;
     
+    /**
+     * Whether Spotify is getting restarted
+     */
     var isRestarting = false;
     
     /**
@@ -197,12 +199,14 @@ class SpotifyManager: NSObject {
     
     func restartSpotify() {
         isRestarting = true;
+        titleChangeHandler(.ad)
         _ = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "quit")
         startSpotify()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             self.spotifyPlay()
             DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
                 self.spotifyPlay()
+                self.titleChangeHandler(.noAd)
                 self.isRestarting = false
             })
         })
