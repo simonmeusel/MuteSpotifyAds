@@ -10,14 +10,18 @@ import Cocoa
 import Foundation
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
     let endlessPrivateSessionKey = "EndlessPrivateSession"
     let restartToSkipAdsKey = "RestartToSkipAds"
+    let notificationsKey = "Notifications"
     
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var titleMenuItem: NSMenuItem!
     @IBOutlet weak var endlessPrivateSessionCheckbox: NSMenuItem!
     @IBOutlet weak var restartToSkipAdsCheckbox: NSMenuItem!
+    @IBOutlet weak var notificationsCheckbox: NSMenuItem!
+    
+    var notificationsEnabled = false;
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var spotifyManager: SpotifyManager?;
@@ -45,30 +49,41 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func toggleEndlessPrivateSession(_ sender: NSMenuItem) {
         if spotifyManager!.endlessPrivateSessionEnabled {
             spotifyManager?.endlessPrivateSessionEnabled = false
-            UserDefaults.standard.set(false, forKey: endlessPrivateSessionKey)
             spotifyManager?.disablePrivateSession()
             sender.state = .off
         } else {
             spotifyManager?.endlessPrivateSessionEnabled = true
-            UserDefaults.standard.set(true, forKey: endlessPrivateSessionKey)
             spotifyManager?.enablePrivateSession()
             sender.state = .on
         }
+        UserDefaults.standard.set(spotifyManager?.endlessPrivateSessionEnabled, forKey: endlessPrivateSessionKey)
     }
     
     @IBAction func toggleRestartToSkipAds(_ sender: NSMenuItem) {
         if spotifyManager!.restartToSkipAdsEnabled {
             spotifyManager?.restartToSkipAdsEnabled = false
-            UserDefaults.standard.set(false, forKey: restartToSkipAdsKey)
             sender.state = .off
         } else {
             spotifyManager?.restartToSkipAdsEnabled = true
-            UserDefaults.standard.set(true, forKey: restartToSkipAdsKey)
             sender.state = .on
         }
+        UserDefaults.standard.set(spotifyManager?.restartToSkipAdsEnabled, forKey: restartToSkipAdsKey)
+    }
+    
+    @IBAction func toggleNotifications(_ sender: NSMenuItem) {
+        if notificationsEnabled {
+            notificationsEnabled = false
+            sender.state = .off
+        } else {
+            notificationsEnabled = true
+            sender.state = .on
+        }
+        UserDefaults.standard.set(notificationsEnabled, forKey: notificationsKey)
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        NSUserNotificationCenter.default.delegate = self
+        
         setStatusBarTitle(title: .noAd)
         statusItem.menu = statusMenu
         
@@ -92,10 +107,41 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             spotifyManager?.restartToSkipAdsEnabled = true
             restartToSkipAdsCheckbox.state = .on
         }
+        
+        if UserDefaults.standard.object(forKey: notificationsKey) == nil {
+            UserDefaults.standard.set(true, forKey: notificationsKey)
+        }
+        if UserDefaults.standard.bool(forKey: notificationsKey) {
+            notificationsEnabled = true
+            notificationsCheckbox.state = .on
+        }
     }
     
     func setStatusBarTitle(title: StatusBarTitle) {
         statusItem.title = title.rawValue
+        
+        if title == StatusBarTitle.ad {
+            if spotifyManager?.restartToSkipAdsEnabled ?? false {
+                sendNotificatoin(title: "Skipping Spotify advertisement")
+            } else {
+                sendNotificatoin(title: "Muting Spotify advertisement")
+            }
+        }
+    }
+    
+    func sendNotificatoin(title: String) {
+        let notification = NSUserNotification()
+        
+        notification.hasActionButton = false
+        notification.title = title
+        notification.informativeText = "You can disable notifications in the status bar"
+        
+        NSUserNotificationCenter.default.deliver(notification)
+    }
+    
+    
+    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
+        return true
     }
     
     func openWebsite(url: String) {

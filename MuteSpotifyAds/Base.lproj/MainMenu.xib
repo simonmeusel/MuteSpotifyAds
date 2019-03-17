@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -15,6 +15,7 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="MuteSpotifyAds" customModuleProvider="target">
             <connections>
                 <outlet property="endlessPrivateSessionCheckbox" destination="o3E-lf-Jhd" id="yKp-C1-PHU"/>
+                <outlet property="notificationsCheckbox" destination="xcw-JU-8Ai" id="VMH-h2-Gmq"/>
                 <outlet property="restartToSkipAdsCheckbox" destination="7pt-Ak-HDD" id="DD7-3v-iN8"/>
                 <outlet property="statusMenu" destination="KUr-cl-g3N" id="quZ-j6-rXq"/>
                 <outlet property="titleMenuItem" destination="Qme-N6-cSD" id="InN-nV-s8I"/>
@@ -40,6 +41,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="toggleRestartToSkipAds:" target="Voe-Tx-rLC" id="FrK-V2-X4I"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="➤  Notofications" id="xcw-JU-8Ai">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="toggleNotifications:" target="Voe-Tx-rLC" id="w6c-t0-j75"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="q9W-ox-c2F"/>
