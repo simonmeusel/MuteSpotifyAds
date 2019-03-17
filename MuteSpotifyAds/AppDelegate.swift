@@ -121,11 +121,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         statusItem.title = title.rawValue
         
         if title == StatusBarTitle.ad {
-            if spotifyManager?.restartToSkipAdsEnabled ?? false {
-                sendNotificatoin(title: "Skipping Spotify advertisement")
-            } else {
-                sendNotificatoin(title: "Muting Spotify advertisement")
-            }
+            sendNotificatoin(title: "Muting Spotify advertisement")
         }
     }
     
