@@ -59,6 +59,8 @@ class SpotifyManager: NSObject {
         
         while let file = enumerator?.nextObject() as? URL {
             if file.path.hasSuffix("-user") {
+                files.append(file.appendingPathComponent("recently_played.bnk.tmp").path)
+                files.append(file.appendingPathComponent("ad-state-storage.bnk.tmp").path)
                 files.append(file.appendingPathComponent("recently_played.bnk").path)
                 files.append(file.appendingPathComponent("ad-state-storage.bnk").path)
             }
