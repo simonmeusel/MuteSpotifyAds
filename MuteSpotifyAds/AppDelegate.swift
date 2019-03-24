@@ -120,7 +120,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     func setStatusBarTitle(title: StatusBarTitle) {
         statusItem.title = title.rawValue
         
-        if title == StatusBarTitle.ad {
+        if notificationsEnabled && title == StatusBarTitle.ad {
             sendNotificatoin(title: "Muting Spotify advertisement")
         }
     }
