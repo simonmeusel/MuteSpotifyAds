@@ -65,15 +65,13 @@ class SpotifyManager: NSObject {
             }
         }
         
+        // Create file watcher with context
         var context = FSEventStreamContext(version: 0, info: UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque()), retain: nil, release: nil, copyDescription: nil)
-        
         fileEventStream = FSEventStreamCreate(kCFAllocatorDefault, {
             _, info, _, _, _, _ in
-            
             let _ = Unmanaged<SpotifyManager>.fromOpaque(
                 info!).takeUnretainedValue().trackChanged()
-            
-        }, &context, files as CFArray, FSEventStreamEventId(kFSEventStreamEventIdSinceNow), 10, UInt32(kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagFileEvents))
+        }, &context, files as CFArray, FSEventStreamEventId(kFSEventStreamEventIdSinceNow), 0, UInt32(kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagFileEvents))
         
         FSEventStreamScheduleWithRunLoop(fileEventStream!, RunLoop.current.getCFRunLoop(), CFRunLoopMode.defaultMode.rawValue)
         FSEventStreamStart(fileEventStream!)
