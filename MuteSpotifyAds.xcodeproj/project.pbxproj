@@ -12,7 +12,6 @@
 		F336C09320BDA27E00C757DA /* SpotifyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336C09220BDA27E00C757DA /* SpotifyManager.swift */; };
 		F336C09520BDA34200C757DA /* StatusBarTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336C09420BDA34200C757DA /* StatusBarTitle.swift */; };
 		F37277D2212203EC00CC05DB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F321C45B20B89BC100C504CD /* MainMenu.xib */; };
-		F3C10A6720BDB0510002A2B3 /* EonilFileSystemEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C10A6620BDB0510002A2B3 /* EonilFileSystemEvents.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +35,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3C10A6720BDB0510002A2B3 /* EonilFileSystemEvents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +92,6 @@
 				F321C45020B89BBF00C504CD /* Sources */,
 				F321C45120B89BBF00C504CD /* Frameworks */,
 				F321C45220B89BBF00C504CD /* Resources */,
-				F3C10A6820BDB0970002A2B3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -136,6 +133,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = F321C44B20B89BBF00C504CD;
 			productRefGroup = F321C45520B89BBF00C504CD /* Products */;
@@ -158,24 +156,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		F3C10A6820BDB0970002A2B3 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/EonilFileSystemEvents.framework",
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/EonilFileSystemEvents.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F321C45020B89BBF00C504CD /* Sources */ = {
@@ -330,10 +310,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4Z9RUD85Z8;
 				ENABLE_HARDENED_RUNTIME = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = MuteSpotifyAds/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -342,7 +318,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.simonmeusel.MuteSpotifyAds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -355,10 +331,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4Z9RUD85Z8;
 				ENABLE_HARDENED_RUNTIME = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = MuteSpotifyAds/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -366,7 +338,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.simonmeusel.MuteSpotifyAds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
