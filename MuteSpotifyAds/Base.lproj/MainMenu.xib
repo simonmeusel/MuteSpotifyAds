@@ -43,7 +43,7 @@
                         <action selector="toggleRestartToSkipAds:" target="Voe-Tx-rLC" id="FrK-V2-X4I"/>
                     </connections>
                 </menuItem>
-                <menuItem title="➤  Notofications" id="xcw-JU-8Ai">
+                <menuItem title="➤  Notifications" id="xcw-JU-8Ai">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="toggleNotifications:" target="Voe-Tx-rLC" id="w6c-t0-j75"/>
