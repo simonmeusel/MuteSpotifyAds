@@ -114,7 +114,7 @@
 				TargetAttributes = {
 					F321C45320B89BBF00C504CD = {
 						CreatedOnToolsVersion = 9.3.1;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.HardenedRuntime = {
 								enabled = 1;
@@ -318,7 +318,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.simonmeusel.MuteSpotifyAds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -338,7 +338,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.simonmeusel.MuteSpotifyAds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
