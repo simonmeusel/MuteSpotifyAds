@@ -42,9 +42,12 @@ class SpotifyManager: NSObject {
         
         super.init()
         
-        startSpotify()
         
-        _ = trackChanged()
+        DispatchQueue.global(qos: .default).async {
+            self.startSpotify()
+            
+            _ = self.trackChanged()
+        }
     }
     
     func startWatchingForFileChanges() {
@@ -69,8 +72,11 @@ class SpotifyManager: NSObject {
         var context = FSEventStreamContext(version: 0, info: UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque()), retain: nil, release: nil, copyDescription: nil)
         fileEventStream = FSEventStreamCreate(kCFAllocatorDefault, {
             _, info, _, _, _, _ in
-            let _ = Unmanaged<SpotifyManager>.fromOpaque(
-                info!).takeUnretainedValue().trackChanged()
+            
+            DispatchQueue.global(qos: .default).async {
+                _ = Unmanaged<SpotifyManager>.fromOpaque(
+                    info!).takeUnretainedValue().trackChanged()
+            }
         }, &context, files as CFArray, FSEventStreamEventId(kFSEventStreamEventIdSinceNow), 0, UInt32(kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagFileEvents))
         
         FSEventStreamScheduleWithRunLoop(fileEventStream!, RunLoop.current.getCFRunLoop(), CFRunLoopMode.defaultMode.rawValue)
@@ -224,6 +230,7 @@ class SpotifyManager: NSObject {
      */
     func runAppleScript(script: String) -> String {
         self.checkIfSpotifyIsRunning()
+        
         let process = Process();
         process.launchPath = "/usr/bin/osascript"
         process.arguments = ["-e", script]
