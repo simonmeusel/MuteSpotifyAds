@@ -87,7 +87,7 @@ class SpotifyManager: NSObject {
         let process = Process();
         // Open application with bundle identifier
         process.launchPath = "/usr/bin/open"
-        process.arguments = ["-b", "com.spotify.client"]
+        process.arguments = ["--hide", "-b", "com.spotify.client"]
         process.launch()
         process.waitUntilExit()
     }
