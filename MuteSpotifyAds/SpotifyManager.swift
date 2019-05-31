@@ -17,6 +17,7 @@ class SpotifyManager: NSObject {
     
     var endlessPrivateSessionEnabled = false
     var restartToSkipAdsEnabled = false
+    var songLogPath: String? = nil
     
     /**
      * Volume before mute, between 0 and 100
@@ -36,6 +37,8 @@ class SpotifyManager: NSObject {
      * TODO: Remove when spotify bug gets fixed
      */
     var adStuckTimer: Timer?;
+    
+    var lastSongLogTime = Date()
     
     init(titleChangeHandler: @escaping ((StatusBarTitle) -> Void)) {
         self.titleChangeHandler = titleChangeHandler
@@ -184,6 +187,10 @@ class SpotifyManager: NSObject {
             })
         }
         
+        if songLogPath != nil {
+            logSong()
+        }
+        
         return changed
     }
     
@@ -265,4 +272,40 @@ class SpotifyManager: NSObject {
     func spotifyPlay() {
         _ = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "play")
     }
+    
+    /**
+     * Log information about the current song to the song log file
+     */
+    func logSong() {
+        let date = Date()
+        if (date.timeIntervalSince(lastSongLogTime) < 2) {
+            return
+        }
+        lastSongLogTime = date;
+        
+        var script = "set o to \"\"\n"
+        let songProperties = ["artist", "album", "disc number", "duration", "played count", "track number", "popularity", "id", "name", "artwork url", "album artist", "spotify url"]
+        for property in songProperties {
+            script += "tell application \"Spotify\"\nset o to o & \"\n\" & (get " + property + " of current track)\nend tell\n"
+        }
+        
+        var logEntry = runAppleScript(script: script).replacingOccurrences(of: ",", with: ";").replacingOccurrences(of: "\n", with: ",")
+        if logEntry == "" {
+            return
+        }
+        logEntry.removeFirst()
+        logEntry.removeLast()
+        logEntry += "," + date.description + "\n"
+        
+        if !FileManager.default.fileExists(atPath: songLogPath!) {
+            FileManager.default.createFile(atPath: songLogPath!, contents: (songProperties.joined(separator: ",") + ",date\n").data(using: .utf8), attributes: nil)
+        }
+        
+        if let fileUpdater = try? FileHandle(forUpdating: URL(fileURLWithPath: songLogPath!)) {
+            fileUpdater.seekToEndOfFile()
+            fileUpdater.write(logEntry.data(using: .utf8)!)
+            fileUpdater.closeFile()
+        }
+    }
+    
 }

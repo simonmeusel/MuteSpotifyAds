@@ -17,6 +17,7 @@
                 <outlet property="endlessPrivateSessionCheckbox" destination="o3E-lf-Jhd" id="yKp-C1-PHU"/>
                 <outlet property="notificationsCheckbox" destination="xcw-JU-8Ai" id="VMH-h2-Gmq"/>
                 <outlet property="restartToSkipAdsCheckbox" destination="7pt-Ak-HDD" id="DD7-3v-iN8"/>
+                <outlet property="songLogCheckbox" destination="GPc-bM-QPt" id="Cvp-2p-C95"/>
                 <outlet property="statusMenu" destination="KUr-cl-g3N" id="quZ-j6-rXq"/>
                 <outlet property="titleMenuItem" destination="Qme-N6-cSD" id="InN-nV-s8I"/>
             </connections>
@@ -31,7 +32,7 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="j8S-qT-8fQ"/>
-                <menuItem title="∞ Private session" id="o3E-lf-Jhd">
+                <menuItem title="∞  Private session" id="o3E-lf-Jhd">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="toggleEndlessPrivateSession:" target="Voe-Tx-rLC" id="uR4-Ny-dNh"/>
@@ -47,6 +48,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="toggleNotifications:" target="Voe-Tx-rLC" id="w6c-t0-j75"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="≡  Song log" id="GPc-bM-QPt">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="toggleSongLog:" target="Voe-Tx-rLC" id="38G-di-z8M"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="q9W-ox-c2F"/>

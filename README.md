@@ -10,9 +10,14 @@ This is a native and efficient macOS application automatically silencing ads on 
 
 This application is very CPU and power efficient, since it only checks for an ad when a new song gets played.
 
-You can also enable a endless private Spotify session, see below.
-
 This application is not in any way affiliated with Spotify.
+
+## Features
+
+* Mute ads
+* Endless private session
+* Song log file
+* Skip ads 
 
 ## Usage
 

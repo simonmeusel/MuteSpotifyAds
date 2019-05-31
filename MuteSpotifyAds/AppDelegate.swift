@@ -14,12 +14,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let endlessPrivateSessionKey = "EndlessPrivateSession"
     let restartToSkipAdsKey = "RestartToSkipAds"
     let notificationsKey = "Notifications"
+    let songLogPathKey = "SongLogPath"
     
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var titleMenuItem: NSMenuItem!
     @IBOutlet weak var endlessPrivateSessionCheckbox: NSMenuItem!
     @IBOutlet weak var restartToSkipAdsCheckbox: NSMenuItem!
     @IBOutlet weak var notificationsCheckbox: NSMenuItem!
+    @IBOutlet weak var songLogCheckbox: NSMenuItem!
     
     var notificationsEnabled = false;
     
@@ -81,6 +83,30 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         UserDefaults.standard.set(notificationsEnabled, forKey: notificationsKey)
     }
     
+    @IBAction func toggleSongLog(_ sender: NSMenuItem) {
+        if spotifyManager?.songLogPath != nil {
+            spotifyManager?.songLogPath = nil
+            sender.state = .off
+        } else {
+            let panel = NSSavePanel()
+            panel.allowedFileTypes = ["csv"]
+            panel.allowsOtherFileTypes = true
+            panel.canCreateDirectories = true
+            panel.canSelectHiddenExtension = true
+            panel.showsTagField = false
+            panel.message = "The song log file will contain a entry for each song you listen.\nSelect where the .csv file should be saved on disk."
+            panel.titleVisibility = .visible
+            let result = panel.runModal()
+            if result == .OK {
+                spotifyManager?.songLogPath = panel.url?.path
+                sender.state = .on
+            } else {
+                spotifyManager?.songLogPath = nil
+            }
+        }
+        UserDefaults.standard.set(spotifyManager?.songLogPath, forKey: songLogPathKey)
+    }
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         NSUserNotificationCenter.default.delegate = self
         
@@ -114,6 +140,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         if UserDefaults.standard.bool(forKey: notificationsKey) {
             notificationsEnabled = true
             notificationsCheckbox.state = .on
+        }
+        
+        spotifyManager?.songLogPath = UserDefaults.standard.string(forKey: songLogPathKey)
+        if spotifyManager?.songLogPath != nil {
+            songLogCheckbox.state = .on
         }
     }
     
