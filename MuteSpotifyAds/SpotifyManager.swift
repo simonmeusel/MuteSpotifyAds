@@ -22,21 +22,21 @@ class SpotifyManager: NSObject {
     /**
      * Volume before mute, between 0 and 100
      */
-    var spotifyUserVolume = 0;
+    var spotifyUserVolume = 0
     /**
      * Whether spotify is being muted
      */
-    var muted = false;
+    var muted = false
     
     /**
      * Whether Spotify is getting restarted
      */
-    var isRestarting = false;
+    var isRestarting = false
     
     /**
      * TODO: Remove when spotify bug gets fixed
      */
-    var adStuckTimer: Timer?;
+    var adStuckTimer: Timer?
     
     var lastSongSpotifyURL: String = ""
     
@@ -87,7 +87,7 @@ class SpotifyManager: NSObject {
     }
     
     func startSpotify() {
-        let process = Process();
+        let process = Process()
         // Open application with bundle identifier
         process.launchPath = "/usr/bin/open"
         process.arguments = ["--hide", "-b", "com.spotify.client"]
@@ -139,7 +139,7 @@ class SpotifyManager: NSObject {
     func trackChanged() -> Bool {
         self.checkIfSpotifyIsRunning()
         
-        var changed = false;
+        var changed = false
         
         if isSpotifyAdPlaying() {
             if !restartToSkipAdsEnabled && !muted {
@@ -147,7 +147,7 @@ class SpotifyManager: NSObject {
                 setSpotifyVolume(volume: 0)
                 muted = true
                 titleChangeHandler(.ad)
-                changed = true;
+                changed = true
             }
             if restartToSkipAdsEnabled {
                 restartSpotify()
@@ -165,7 +165,7 @@ class SpotifyManager: NSObject {
                 }
                 muted = false
                 titleChangeHandler(.noAd)
-                changed = true;
+                changed = true
             }
         }
         
@@ -218,11 +218,11 @@ class SpotifyManager: NSObject {
     }
     
     func getCurrentSongSpotifyURL() -> String {
-        return runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "(get spotify url of current track)");
+        return runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "(get spotify url of current track)")
     }
     
     func restartSpotify() {
-        isRestarting = true;
+        isRestarting = true
         titleChangeHandler(.ad)
         _ = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "quit")
         startSpotify()
@@ -242,7 +242,7 @@ class SpotifyManager: NSObject {
     func runAppleScript(script: String) -> String {
         self.checkIfSpotifyIsRunning()
         
-        let process = Process();
+        let process = Process()
         process.launchPath = "/usr/bin/osascript"
         process.arguments = ["-e", script]
         
@@ -253,7 +253,7 @@ class SpotifyManager: NSObject {
         process.waitUntilExit()
         
         let data = pipe.fileHandleForReading.availableData
-        return String(data: data, encoding: String.Encoding.utf8)!;
+        return String(data: data, encoding: String.Encoding.utf8)!
     }
     
     /**
