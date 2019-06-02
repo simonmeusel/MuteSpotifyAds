@@ -38,7 +38,7 @@ class SpotifyManager: NSObject {
      */
     var adStuckTimer: Timer?;
     
-    var lastSongLogTime = Date()
+    var lastSongSpotifyURL: String = ""
     
     init(titleChangeHandler: @escaping ((StatusBarTitle) -> Void)) {
         self.titleChangeHandler = titleChangeHandler
@@ -213,8 +213,12 @@ class SpotifyManager: NSObject {
      * This is done by checking the spoify url's prifix
      */
     func isSpotifyAdPlaying() -> Bool {
-        let spotifyURL = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "(get spotify url of current track)")
+        let spotifyURL = getCurrentSongSpotifyURL()
         return spotifyURL.starts(with: "spotify:ad")
+    }
+    
+    func getCurrentSongSpotifyURL() -> String {
+        return runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "(get spotify url of current track)");
     }
     
     func restartSpotify() {
@@ -277,14 +281,14 @@ class SpotifyManager: NSObject {
      * Log information about the current song to the song log file
      */
     func logSong() {
-        let date = Date()
-        if (date.timeIntervalSince(lastSongLogTime) < 2) {
+        let currentSongSpotifyURL = getCurrentSongSpotifyURL()
+        if (lastSongSpotifyURL == currentSongSpotifyURL) {
             return
         }
-        lastSongLogTime = date;
+        lastSongSpotifyURL = currentSongSpotifyURL
         
         var script = "set o to \"\"\n"
-        let songProperties = ["artist", "album", "disc number", "duration", "played count", "track number", "popularity", "id", "name", "artwork url", "album artist", "spotify url"]
+        let songProperties = ["name", "artist", "album", "disc number", "duration", "played count", "track number", "popularity", "id", "artwork url", "album artist", "spotify url"]
         for property in songProperties {
             script += "tell application \"Spotify\"\nset o to o & \"\n\" & (get " + property + " of current track)\nend tell\n"
         }
@@ -295,7 +299,7 @@ class SpotifyManager: NSObject {
         }
         logEntry.removeFirst()
         logEntry.removeLast()
-        logEntry += "," + date.description + "\n"
+        logEntry += "," + Date().description + "\n"
         
         if !FileManager.default.fileExists(atPath: songLogPath!) {
             FileManager.default.createFile(atPath: songLogPath!, contents: (songProperties.joined(separator: ",") + ",date\n").data(using: .utf8), attributes: nil)
