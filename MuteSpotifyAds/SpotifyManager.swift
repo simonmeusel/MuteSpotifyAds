@@ -47,7 +47,7 @@ class SpotifyManager: NSObject {
         
         
         DispatchQueue.global(qos: .default).async {
-            self.startSpotify()
+            self.startSpotify(foreground: true)
             
             _ = self.trackChanged()
         }
@@ -86,11 +86,18 @@ class SpotifyManager: NSObject {
         FSEventStreamStart(fileEventStream!)
     }
     
-    func startSpotify() {
+    func startSpotify(foreground: Bool) {
         let process = Process()
         // Open application with bundle identifier
         process.launchPath = "/usr/bin/open"
-        process.arguments = ["--hide", "-b", "com.spotify.client"]
+        
+        var arguments: [String] = []
+        if (!foreground) {
+            arguments += ["--hide", "--background"]
+        }
+        arguments += ["-b", "com.spotify.client"]
+        
+        process.arguments = arguments
         process.launch()
         process.waitUntilExit()
     }
@@ -225,7 +232,7 @@ class SpotifyManager: NSObject {
         isRestarting = true
         titleChangeHandler(.ad)
         _ = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "quit")
-        startSpotify()
+        startSpotify(foreground: false)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             self.spotifyPlay()
             DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
