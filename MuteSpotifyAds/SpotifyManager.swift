@@ -3,7 +3,7 @@
 //  MuteSpotifyAds
 //
 //  Created by Simon Meusel on 29.05.18.
-//  Copyright © 2018 Simon Meusel. All rights reserved.
+//  Copyright © 2018 - 2019 Simon Meusel. All rights reserved.
 //
 
 import Cocoa
@@ -45,6 +45,16 @@ class SpotifyManager: NSObject {
         
         super.init()
         
+        // Stop this application when Spotify gets closed
+        NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didTerminateApplicationNotification, object: nil, queue: nil, using: {
+            notification in
+            
+            let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as! NSRunningApplication
+            if (app.bundleIdentifier == "com.spotify.client") {
+                NSApplication.shared.terminate(self)
+            }
+            print(app.bundleIdentifier ?? "")
+        })
         
         DispatchQueue.global(qos: .default).async {
             self.startSpotify(foreground: true)
@@ -144,8 +154,6 @@ class SpotifyManager: NSObject {
      * Returns true if spotify got muted or unmuted, false otherwise
      */
     func trackChanged() -> Bool {
-        self.checkIfSpotifyIsRunning()
-        
         var changed = false
         
         if isSpotifyAdPlaying() {
@@ -247,8 +255,6 @@ class SpotifyManager: NSObject {
      * Runs the given apple script and passed logs to completion handler
      */
     func runAppleScript(script: String) -> String {
-        self.checkIfSpotifyIsRunning()
-        
         let process = Process()
         process.launchPath = "/usr/bin/osascript"
         process.arguments = ["-e", script]
@@ -261,19 +267,6 @@ class SpotifyManager: NSObject {
         
         let data = pipe.fileHandleForReading.availableData
         return String(data: data, encoding: String.Encoding.utf8)!
-    }
-    
-    /**
-     * Checks whether Spotify is running and terminates the application if it is closed
-     */
-    func checkIfSpotifyIsRunning() {
-        if isRestarting {
-            return
-        }
-        let running = NSRunningApplication.runningApplications(withBundleIdentifier: "com.spotify.client").count != 0
-        if (!running) {
-            NSApplication.shared.terminate(self)
-        }
     }
     
     func toggleSpotifyPlayPause() {
