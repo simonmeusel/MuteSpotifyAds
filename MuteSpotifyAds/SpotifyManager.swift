@@ -27,16 +27,10 @@ class SpotifyManager: NSObject {
      * Whether spotify is being muted
      */
     var muted = false
-    
     /**
      * Whether Spotify is getting restarted
      */
     var isRestarting = false
-    
-    /**
-     * TODO: Remove when spotify bug gets fixed
-     */
-    var adStuckTimer: Timer?
     
     var lastSongSpotifyURL: String = ""
     
@@ -50,10 +44,9 @@ class SpotifyManager: NSObject {
             notification in
             
             let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as! NSRunningApplication
-            if (app.bundleIdentifier == "com.spotify.client") {
+            if (app.bundleIdentifier == "com.spotify.client" && !self.isRestarting) {
                 NSApplication.shared.terminate(self)
             }
-            print(app.bundleIdentifier ?? "")
         })
         
         DispatchQueue.global(qos: .default).async {
@@ -170,10 +163,6 @@ class SpotifyManager: NSObject {
         } else {
             // Reactivate spotify if ad is done
             if muted {
-                if (adStuckTimer != nil) {
-                    adStuckTimer!.invalidate()
-                    adStuckTimer = nil
-                }
                 // Don't change volume if user manually changed it
                 if getSpotifyVolume() == 0 && spotifyUserVolume != 0 {
                     setSpotifyVolume(volume: spotifyUserVolume)
@@ -181,18 +170,6 @@ class SpotifyManager: NSObject {
                 muted = false
                 titleChangeHandler(.noAd)
                 changed = true
-            }
-        }
-        
-        // TODO: Remove when spotify bug gets fixed
-        if !restartToSkipAdsEnabled && muted && adStuckTimer == nil {
-            // Spotify bug workaround
-            // If ad gets stuck, pause and play
-            // TODO: Search for TODOs
-            adStuckTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) {
-                _ in
-                self.toggleSpotifyPlayPause()
-                self.toggleSpotifyPlayPause()
             }
         }
         
