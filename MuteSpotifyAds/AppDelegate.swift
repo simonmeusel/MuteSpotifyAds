@@ -117,6 +117,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"]!
         titleMenuItem.title = titleMenuItem.title + " v\(version)"
         
+        print("MuteSpotifyAds v\(version)")
+        print("macOS \(ProcessInfo.processInfo.operatingSystemVersionString))")
+        
         spotifyManager = SpotifyManager(titleChangeHandler: {
             title in
             self.setStatusBarTitle(title: title)
