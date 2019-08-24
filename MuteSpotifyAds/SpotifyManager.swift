@@ -8,6 +8,21 @@
 
 import Cocoa
 
+func shell(launchPath: String, arguments: [String]) -> String
+{
+    let task = Process()
+    task.launchPath = launchPath
+    task.arguments = arguments
+    
+    let pipe = Pipe()
+    task.standardOutput = pipe
+    task.launch()
+    
+    let data = pipe.fileHandleForReading.readDataToEndOfFile()
+    let output = String(data: data, encoding: String.Encoding.utf8)!
+    return output
+}
+
 class SpotifyManager: NSObject {
     
     static let appleScriptSpotifyPrefix = "tell application \"Spotify\" to "
@@ -18,6 +33,7 @@ class SpotifyManager: NSObject {
     var endlessPrivateSessionEnabled = false
     var restartToSkipAdsEnabled = false
     var songLogPath: String? = nil
+    var startSpotifyATS = false
     
     /**
      * Volume before mute, between 0 and 100
@@ -49,10 +65,19 @@ class SpotifyManager: NSObject {
             }
         })
         
-        DispatchQueue.global(qos: .default).async {
-            self.startSpotify(foreground: true)
-            
-            _ = self.trackChanged()
+        if startSpotifyATS {
+            DispatchQueue.global(qos: .default).async {
+                self.startSpotify(foreground: true)
+                _ = self.trackChanged()
+            }
+        } else {
+            var app: String = ""
+            DispatchQueue.global(qos: .default).async {
+                while !app.contains("Applications/Spotify") {
+                    app = shell(launchPath: "/bin/ps", arguments: ["aux"])
+                }
+                _ = self.trackChanged()
+            }
         }
     }
     

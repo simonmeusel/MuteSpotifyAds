@@ -13,6 +13,7 @@ import Foundation
 class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
     let endlessPrivateSessionKey = "EndlessPrivateSession"
     let restartToSkipAdsKey = "RestartToSkipAds"
+    let startSpotifyAtAppStartKey = "StartSpotifyWhenMSAStarts"
     let notificationsKey = "Notifications"
     let songLogPathKey = "SongLogPath"
     
@@ -20,6 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     @IBOutlet weak var titleMenuItem: NSMenuItem!
     @IBOutlet weak var endlessPrivateSessionCheckbox: NSMenuItem!
     @IBOutlet weak var restartToSkipAdsCheckbox: NSMenuItem!
+    @IBOutlet weak var startSpotifyAtAppStartCheckbox: NSMenuItem!
     @IBOutlet weak var notificationsCheckbox: NSMenuItem!
     @IBOutlet weak var songLogCheckbox: NSMenuItem!
     
@@ -83,6 +85,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         UserDefaults.standard.set(notificationsEnabled, forKey: notificationsKey)
     }
     
+    @IBAction func toggleSpotifyStartATS(_ sender: NSMenuItem) {
+        if spotifyManager!.startSpotifyATS {
+            spotifyManager?.startSpotifyATS = false
+            sender.state = .off
+        } else {
+            spotifyManager?.startSpotifyATS = true
+            sender.state = .on
+        }
+        UserDefaults.standard.set(spotifyManager?.startSpotifyATS, forKey: startSpotifyAtAppStartKey)
+    }
+    
     @IBAction func toggleSongLog(_ sender: NSMenuItem) {
         if spotifyManager?.songLogPath != nil {
             spotifyManager?.songLogPath = nil
@@ -135,6 +148,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         if UserDefaults.standard.bool(forKey: restartToSkipAdsKey) {
             spotifyManager?.restartToSkipAdsEnabled = true
             restartToSkipAdsCheckbox.state = .on
+        }
+        
+        if UserDefaults.standard.bool(forKey: startSpotifyAtAppStartKey) {
+            spotifyManager?.startSpotifyATS = true
+            startSpotifyAtAppStartCheckbox.state = .on
+        } else {
+            spotifyManager?.startSpotifyATS = false
+            startSpotifyAtAppStartCheckbox.state = .off
         }
         
         if UserDefaults.standard.object(forKey: notificationsKey) == nil {

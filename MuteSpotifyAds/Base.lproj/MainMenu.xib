@@ -18,6 +18,7 @@
                 <outlet property="notificationsCheckbox" destination="xcw-JU-8Ai" id="VMH-h2-Gmq"/>
                 <outlet property="restartToSkipAdsCheckbox" destination="7pt-Ak-HDD" id="DD7-3v-iN8"/>
                 <outlet property="songLogCheckbox" destination="GPc-bM-QPt" id="Cvp-2p-C95"/>
+                <outlet property="startSpotifyAtAppStartCheckbox" destination="Zxc-BN-6PQ" id="jXN-Jz-GQX"/>
                 <outlet property="statusMenu" destination="KUr-cl-g3N" id="quZ-j6-rXq"/>
                 <outlet property="titleMenuItem" destination="Qme-N6-cSD" id="InN-nV-s8I"/>
             </connections>
@@ -42,6 +43,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="toggleRestartToSkipAds:" target="Voe-Tx-rLC" id="FrK-V2-X4I"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="◎ Start Spotify with MSA" id="Zxc-BN-6PQ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="toggleSpotifyStartATS:" target="Voe-Tx-rLC" id="CEp-kc-9Ka"/>
                     </connections>
                 </menuItem>
                 <menuItem title="➤  Notifications" id="xcw-JU-8Ai">
@@ -83,6 +90,7 @@
                     </connections>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="196" y="144"/>
         </menu>
     </objects>
 </document>
