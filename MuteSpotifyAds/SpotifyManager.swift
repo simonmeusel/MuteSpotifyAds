@@ -8,7 +8,7 @@
 
 import Cocoa
 
-func shell(launchPath: String, arguments: [String]) -> String
+func runCommand(launchPath: String, arguments: [String]) -> String
 {
     let task = Process()
     task.launchPath = launchPath
@@ -33,7 +33,7 @@ class SpotifyManager: NSObject {
     var endlessPrivateSessionEnabled = false
     var restartToSkipAdsEnabled = false
     var songLogPath: String? = nil
-    var startSpotifyATS = false
+    var startSpotify = false
     
     /**
      * Volume before mute, between 0 and 100
@@ -65,17 +65,9 @@ class SpotifyManager: NSObject {
             }
         })
         
-        if startSpotifyATS {
+        if startSpotify {
             DispatchQueue.global(qos: .default).async {
                 self.startSpotify(foreground: true)
-                _ = self.trackChanged()
-            }
-        } else {
-            var app: String = ""
-            DispatchQueue.global(qos: .default).async {
-                while !app.contains("Applications/Spotify") {
-                    app = shell(launchPath: "/bin/ps", arguments: ["aux"])
-                }
                 _ = self.trackChanged()
             }
         }
