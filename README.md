@@ -17,7 +17,8 @@ This application is not in any way affiliated with Spotify.
 * Mute ads
 * Endless private session
 * Song log file
-* Skip ads 
+* Restart spotify to skip ads
+* Auto-start Spotify with MuteSpotifyAds or run MuteSpotifyAds at startup
 
 ## Usage
 
@@ -128,9 +129,9 @@ Although I created this application and had the idea to use apple script and fil
 
 ## Thanks
 
+Thanks to [BaldEagleX02](https://github.com/BaldEagleX02) for the restart-spotify feature, the auto-start option and help with the documentation!
 Thanks to [Artem Gordinsky](https://github.com/ArtemGordinsky/) and the [other contributors](https://github.com/ArtemGordinsky/Spotifree#thanks) of [Spotifree](https://github.com/ArtemGordinsky/Spotifree)!
 Thanks to [vadian](https://stackoverflow.com/users/5044042/vadian) for the [help](https://stackoverflow.com/questions/51068410/osx-tick-menu-bar-checkbox/51068836#51068836)!
-Thanks to [BaldEagleX02](https://github.com/BaldEagleX02) for the restart-spotify feature and help with the documentation!
 
 ## License
 
