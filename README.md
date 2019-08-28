@@ -38,7 +38,7 @@ To uninstall the application, you can simply trash `MuteSpotifyAds.app`.
 
 ### Troubleshooting
 
-If the Application deos not work, follow the steps for enabling a endless private Spotify session.
+If the Application does not work, follow the steps for enabling a endless private Spotify session.
 
 ## Endless private Spotify session
 
