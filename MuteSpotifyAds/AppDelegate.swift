@@ -3,7 +3,7 @@
 //  MuteSpotifyAds
 //
 //  Created by Simon Meusel on 25.05.18.
-//  Copyright © 2018 Simon Meusel. All rights reserved.
+//  Copyright © 2019 Simon Meusel. All rights reserved.
 //
 
 import Cocoa
@@ -13,6 +13,7 @@ import Foundation
 class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
     let endlessPrivateSessionKey = "EndlessPrivateSession"
     let restartToSkipAdsKey = "RestartToSkipAds"
+    let startSpotifyKey = "StartSpotify"
     let notificationsKey = "Notifications"
     let songLogPathKey = "SongLogPath"
     
@@ -20,6 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     @IBOutlet weak var titleMenuItem: NSMenuItem!
     @IBOutlet weak var endlessPrivateSessionCheckbox: NSMenuItem!
     @IBOutlet weak var restartToSkipAdsCheckbox: NSMenuItem!
+    @IBOutlet weak var startSpotifyCheckbox: NSMenuItem!
     @IBOutlet weak var notificationsCheckbox: NSMenuItem!
     @IBOutlet weak var songLogCheckbox: NSMenuItem!
     
@@ -83,6 +85,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         UserDefaults.standard.set(notificationsEnabled, forKey: notificationsKey)
     }
     
+    @IBAction func toggleSpotifyStart(_ sender: NSMenuItem) {
+        if spotifyManager!.startSpotify {
+            spotifyManager?.startSpotify = false
+            sender.state = .off
+        } else {
+            spotifyManager?.startSpotify = true
+            sender.state = .on
+        }
+        UserDefaults.standard.set(spotifyManager?.startSpotify, forKey: startSpotifyKey)
+    }
+    
     @IBAction func toggleSongLog(_ sender: NSMenuItem) {
         if spotifyManager?.songLogPath != nil {
             spotifyManager?.songLogPath = nil
@@ -124,7 +137,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             title in
             self.setStatusBarTitle(title: title)
         })
-        spotifyManager?.startWatchingForFileChanges()
         
         if UserDefaults.standard.bool(forKey: endlessPrivateSessionKey) {
             spotifyManager?.enablePrivateSession()
@@ -135,6 +147,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         if UserDefaults.standard.bool(forKey: restartToSkipAdsKey) {
             spotifyManager?.restartToSkipAdsEnabled = true
             restartToSkipAdsCheckbox.state = .on
+        }
+        
+        if UserDefaults.standard.object(forKey: startSpotifyKey) == nil {
+            UserDefaults.standard.set(true, forKey: startSpotifyKey)
+        }
+        if UserDefaults.standard.bool(forKey: startSpotifyKey) {
+            spotifyManager?.startSpotify = true
+            startSpotifyCheckbox.state = .on
         }
         
         if UserDefaults.standard.object(forKey: notificationsKey) == nil {
@@ -149,6 +169,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         if spotifyManager?.songLogPath != nil {
             songLogCheckbox.state = .on
         }
+        
+        spotifyManager?.startWatchingForFileChanges()
     }
     
     func setStatusBarTitle(title: StatusBarTitle) {
