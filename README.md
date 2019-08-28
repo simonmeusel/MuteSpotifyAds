@@ -28,6 +28,10 @@ As of version `1.5.0` you can also enable a option to automatically skip ads, by
 
 ## Installation
 
+Via [homebrew](https://brew.sh/): `brew cask install mutespotifyads`
+
+Manual installation:
+
 1. Download this application from the [releases page](https://github.com/simonmeusel/MuteSpotifyAds/releases/)
 2. Move it to your Applications folder
 3. Run it using **Right Click -> Open**. You need to do this because [I don't pay Apple $99 every year](https://developer.apple.com/programs/).
