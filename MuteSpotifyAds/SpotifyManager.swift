@@ -8,21 +8,6 @@
 
 import Cocoa
 
-func runCommand(launchPath: String, arguments: [String]) -> String
-{
-    let task = Process()
-    task.launchPath = launchPath
-    task.arguments = arguments
-    
-    let pipe = Pipe()
-    task.standardOutput = pipe
-    task.launch()
-    
-    let data = pipe.fileHandleForReading.readDataToEndOfFile()
-    let output = String(data: data, encoding: String.Encoding.utf8)!
-    return output
-}
-
 class SpotifyManager: NSObject {
     
     static let appleScriptSpotifyPrefix = "tell application \"Spotify\" to "
