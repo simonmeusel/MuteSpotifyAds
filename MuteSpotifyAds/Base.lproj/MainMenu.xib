@@ -33,7 +33,7 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="j8S-qT-8fQ"/>
-                <menuItem title="∞  Private session" id="o3E-lf-Jhd">
+                <menuItem title="∞  Private session" id="o3E-lf-Jhd">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="toggleEndlessPrivateSession:" target="Voe-Tx-rLC" id="uR4-Ny-dNh"/>
@@ -45,13 +45,13 @@
                         <action selector="toggleRestartToSkipAds:" target="Voe-Tx-rLC" id="FrK-V2-X4I"/>
                     </connections>
                 </menuItem>
-                <menuItem title="◎ Start Spotify with MSA" id="Zxc-BN-6PQ">
+                <menuItem title="➤  Auto-start Spotify" id="Zxc-BN-6PQ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="toggleSpotifyStart:" target="Voe-Tx-rLC" id="LId-yN-U4o"/>
                     </connections>
                 </menuItem>
-                <menuItem title="➤  Notifications" id="xcw-JU-8Ai">
+                <menuItem title=" •  Notifications" id="xcw-JU-8Ai">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="toggleNotifications:" target="Voe-Tx-rLC" id="w6c-t0-j75"/>
@@ -77,7 +77,7 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="I4U-rl-Key"/>
-                <menuItem title="© Simon Meusel" id="IUf-ND-5vk">
+                <menuItem title="© 2019 Simon Meusel" id="IUf-ND-5vk">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="openSimonMeuselWebsite:" target="Voe-Tx-rLC" id="9SM-2J-gz9"/>

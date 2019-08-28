@@ -3,7 +3,7 @@
 //  MuteSpotifyAds
 //
 //  Created by Simon Meusel on 29.05.18.
-//  Copyright © 2018 - 2019 Simon Meusel. All rights reserved.
+//  Copyright © 2019 Simon Meusel. All rights reserved.
 //
 
 import Cocoa
@@ -44,21 +44,23 @@ class SpotifyManager: NSObject {
         NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didTerminateApplicationNotification, object: nil, queue: nil, using: {
             notification in
             
-            let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as! NSRunningApplication
-            if (app.bundleIdentifier == "com.spotify.client" && !self.isRestarting) {
-                NSApplication.shared.terminate(self)
+            if self.startSpotify {
+                let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as! NSRunningApplication
+                if (app.bundleIdentifier == "com.spotify.client" && !self.isRestarting) {
+                    NSApplication.shared.terminate(self)
+                }
             }
         })
-        
+    }
+    
+    func startWatchingForFileChanges() {
         if startSpotify {
             DispatchQueue.global(qos: .default).async {
                 self.startSpotify(foreground: true)
                 _ = self.trackChanged()
             }
         }
-    }
-    
-    func startWatchingForFileChanges() {
+        
         var path = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
         path.appendPathComponent("Spotify")
         path.appendPathComponent("Users")
