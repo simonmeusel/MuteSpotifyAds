@@ -3,7 +3,7 @@
 //  MuteSpotifyAds
 //
 //  Created by Simon Meusel on 25.05.18.
-//  Copyright © 2018 Simon Meusel. All rights reserved.
+//  Copyright © 2019 Simon Meusel. All rights reserved.
 //
 
 import Cocoa
@@ -137,7 +137,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             title in
             self.setStatusBarTitle(title: title)
         })
-        spotifyManager?.startWatchingForFileChanges()
         
         if UserDefaults.standard.bool(forKey: endlessPrivateSessionKey) {
             spotifyManager?.enablePrivateSession()
@@ -150,12 +149,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             restartToSkipAdsCheckbox.state = .on
         }
         
+        if UserDefaults.standard.object(forKey: startSpotifyKey) == nil {
+            UserDefaults.standard.set(true, forKey: startSpotifyKey)
+        }
         if UserDefaults.standard.bool(forKey: startSpotifyKey) {
             spotifyManager?.startSpotify = true
             startSpotifyCheckbox.state = .on
-        } else {
-            spotifyManager?.startSpotify = false
-            startSpotifyCheckbox.state = .off
         }
         
         if UserDefaults.standard.object(forKey: notificationsKey) == nil {
@@ -170,6 +169,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         if spotifyManager?.songLogPath != nil {
             songLogCheckbox.state = .on
         }
+        
+        spotifyManager?.startWatchingForFileChanges()
     }
     
     func setStatusBarTitle(title: StatusBarTitle) {
