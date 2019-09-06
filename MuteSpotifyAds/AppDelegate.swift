@@ -16,6 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let startSpotifyKey = "StartSpotify"
     let notificationsKey = "Notifications"
     let songLogPathKey = "SongLogPath"
+    let quitSpotify = "QuitSpotify"
     
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var titleMenuItem: NSMenuItem!
@@ -24,6 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     @IBOutlet weak var startSpotifyCheckbox: NSMenuItem!
     @IBOutlet weak var notificationsCheckbox: NSMenuItem!
     @IBOutlet weak var songLogCheckbox: NSMenuItem!
+    @IBOutlet weak var quitSpotifyCheckbox: NSMenuItem!
     
     var notificationsEnabled = false
     
@@ -31,8 +33,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     var spotifyManager: SpotifyManager?
     
     @IBAction func quit(_ sender: Any) {
+        if spotifyManager!.quitSpotify == true {
+            spotifyManager?.closeSpotify()
+        }
+        
         NSApplication.shared.terminate(self)
     }
+   
     
     @IBAction func openProjectWebsite(_ sender: Any) {
         openWebsite(url: "https://github.com/simonmeusel/MuteSpotifyAds")
@@ -61,6 +68,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             sender.state = .on
         }
         UserDefaults.standard.set(spotifyManager?.endlessPrivateSessionEnabled, forKey: endlessPrivateSessionKey)
+    }
+    @IBAction func toggleQuitSpotify(_ sender: NSMenuItem){
+        if spotifyManager!.quitSpotify {
+            spotifyManager?.quitSpotify = false
+            sender.state = .off
+        } else {
+            spotifyManager?.quitSpotify = true
+            sender.state = .on
+        }
+        UserDefaults.standard.set(spotifyManager?.restartToSkipAdsEnabled, forKey: quitSpotify)
     }
     
     @IBAction func toggleRestartToSkipAds(_ sender: NSMenuItem) {

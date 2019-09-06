@@ -16,6 +16,7 @@
             <connections>
                 <outlet property="endlessPrivateSessionCheckbox" destination="o3E-lf-Jhd" id="yKp-C1-PHU"/>
                 <outlet property="notificationsCheckbox" destination="xcw-JU-8Ai" id="VMH-h2-Gmq"/>
+                <outlet property="quitSpotifyCheckbox" destination="Ruj-6m-HE0" id="EGl-5c-7Bd"/>
                 <outlet property="restartToSkipAdsCheckbox" destination="7pt-Ak-HDD" id="DD7-3v-iN8"/>
                 <outlet property="songLogCheckbox" destination="GPc-bM-QPt" id="Cvp-2p-C95"/>
                 <outlet property="startSpotifyCheckbox" destination="Zxc-BN-6PQ" id="aSJ-67-53J"/>
@@ -63,6 +64,12 @@
                         <action selector="toggleSongLog:" target="Voe-Tx-rLC" id="38G-di-z8M"/>
                     </connections>
                 </menuItem>
+                <menuItem title="⚠ Quit Spotify" id="Ruj-6m-HE0">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="toggleQuitSpotify:" target="Voe-Tx-rLC" id="UF1-BS-Ka9"/>
+                    </connections>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="q9W-ox-c2F"/>
                 <menuItem title="🔖 License" id="DTq-sR-yDf">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -90,7 +97,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="196" y="144"/>
+            <point key="canvasLocation" x="190" y="133"/>
         </menu>
     </objects>
 </document>
