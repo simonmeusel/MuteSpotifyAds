@@ -109,8 +109,6 @@ class SpotifyManager: NSObject {
         process.launch()
         process.waitUntilExit()
     }
-   
-    
     /**
      * Enables private Spotify session
      */
@@ -235,12 +233,9 @@ class SpotifyManager: NSObject {
     }
     
     func closeSpotify() {
-        
         titleChangeHandler(.ad)
         _ = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "quit")
-        
     }
-    
     /**
      * Runs the given apple script and passed logs to completion handler
      */

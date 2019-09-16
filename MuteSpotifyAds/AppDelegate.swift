@@ -25,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     @IBOutlet weak var startSpotifyCheckbox: NSMenuItem!
     @IBOutlet weak var notificationsCheckbox: NSMenuItem!
     @IBOutlet weak var songLogCheckbox: NSMenuItem!
-    @IBOutlet weak var quitSpotifyCheckbox: NSMenuItem!
+    
     
     var notificationsEnabled = false
     
@@ -33,13 +33,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     var spotifyManager: SpotifyManager?
     
     @IBAction func quit(_ sender: Any) {
-        if spotifyManager!.quitSpotify == true {
-            spotifyManager?.closeSpotify()
-        }
-        
         NSApplication.shared.terminate(self)
     }
-   
+
+    @IBAction func quitWithSotify(_ sender: Any) {
+        spotifyManager?.closeSpotify()
+    }
     
     @IBAction func openProjectWebsite(_ sender: Any) {
         openWebsite(url: "https://github.com/simonmeusel/MuteSpotifyAds")
