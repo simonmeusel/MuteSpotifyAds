@@ -26,7 +26,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     @IBOutlet weak var notificationsCheckbox: NSMenuItem!
     @IBOutlet weak var songLogCheckbox: NSMenuItem!
     
-    
     var notificationsEnabled = false
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
