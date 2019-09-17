@@ -5,9 +5,6 @@
 /* Class = "NSMenuItem"; title = "🔖 License"; ObjectID = "DTq-sR-yDf"; */
 "DTq-sR-yDf.title" = "🔖 License";
 
-/* Class = "NSMenuItem"; title = "© Simon Meusel"; ObjectID = "IUf-ND-5vk"; */
-"IUf-ND-5vk.title" = "© Simon Meusel";
-
 /* Class = "NSMenuItem"; title = "☂︎ MuteSpotifyAds"; ObjectID = "Qme-N6-cSD"; */
 "Qme-N6-cSD.title" = "☂︎ MuteSpotifyAds";
 
@@ -15,4 +12,4 @@
 "o3E-lf-Jhd.title" = "∞ Private session";
 
 /* Class = "NSMenuItem"; title = "⊗ Quit"; ObjectID = "vrP-PM-sCp"; */
-"vrP-PM-sCp.title" = "⊗ Quit";
+"vrP-PM-sCp.title" = "⊗  Quit";

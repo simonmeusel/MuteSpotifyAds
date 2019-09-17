@@ -76,20 +76,20 @@
                         <action selector="openReportBugWebsite:" target="Voe-Tx-rLC" id="YMc-4Z-hHc"/>
                     </connections>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="I4U-rl-Key"/>
-                <menuItem title="© 2019 Simon Meusel" id="IUf-ND-5vk">
+                <menuItem title=" ©  Simon Meusel" id="rc4-2Q-6hz">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="openSimonMeuselWebsite:" target="Voe-Tx-rLC" id="9SM-2J-gz9"/>
+                        <action selector="openSimonMeuselWebsite:" target="Voe-Tx-rLC" id="u1t-RD-hoI"/>
                     </connections>
                 </menuItem>
-                <menuItem title="⚠ Quit Spotify" id="Ruj-6m-HE0">
+                <menuItem isSeparatorItem="YES" id="75F-I8-7yq"/>
+                <menuItem title="⚠ Quit with Spotify" id="Ruj-6m-HE0">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="quitWithSotify:" target="Voe-Tx-rLC" id="Anf-eQ-eP1"/>
                     </connections>
                 </menuItem>
-                <menuItem title="⊗ Quit" id="vrP-PM-sCp">
+                <menuItem title="⊗  Quit" id="vrP-PM-sCp">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="quit:" target="Voe-Tx-rLC" id="Txn-YZ-RiR"/>

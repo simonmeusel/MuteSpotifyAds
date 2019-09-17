@@ -16,7 +16,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let startSpotifyKey = "StartSpotify"
     let notificationsKey = "Notifications"
     let songLogPathKey = "SongLogPath"
-    let quitSpotify = "QuitSpotify"
     
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var titleMenuItem: NSMenuItem!
@@ -36,7 +35,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     }
 
     @IBAction func quitWithSotify(_ sender: Any) {
-        spotifyManager?.closeSpotify()
+        spotifyManager?.quitSpotify()
+        quit(sender);
     }
     
     @IBAction func openProjectWebsite(_ sender: Any) {
@@ -66,16 +66,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             sender.state = .on
         }
         UserDefaults.standard.set(spotifyManager?.endlessPrivateSessionEnabled, forKey: endlessPrivateSessionKey)
-    }
-    @IBAction func toggleQuitSpotify(_ sender: NSMenuItem){
-        if spotifyManager!.quitSpotify {
-            spotifyManager?.quitSpotify = false
-            sender.state = .off
-        } else {
-            spotifyManager?.quitSpotify = true
-            sender.state = .on
-        }
-        UserDefaults.standard.set(spotifyManager?.restartToSkipAdsEnabled, forKey: quitSpotify)
     }
     
     @IBAction func toggleRestartToSkipAds(_ sender: NSMenuItem) {
@@ -205,7 +195,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         NSUserNotificationCenter.default.deliver(notification)
     }
-    
     
     func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
         return true
