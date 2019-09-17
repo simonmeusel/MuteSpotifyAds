@@ -26,6 +26,7 @@
 		F336C09420BDA34200C757DA /* StatusBarTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarTitle.swift; sourceTree = "<group>"; };
 		F37277D4212203F500CC05DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		F37277D5212204FC00CC05DB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		F3967AAD23315F16006C636F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		F3C10A6620BDB0510002A2B3 /* EonilFileSystemEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EonilFileSystemEvents.framework; path = Carthage/Build/Mac/EonilFileSystemEvents.framework; sourceTree = "<group>"; };
 		F3C10A6920BDBA120002A2B3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +135,7 @@
 				en,
 				Base,
 				de,
+				"zh-Hans",
 			);
 			mainGroup = F321C44B20B89BBF00C504CD;
 			productRefGroup = F321C45520B89BBF00C504CD /* Products */;
@@ -177,6 +179,7 @@
 				F321C45C20B89BC100C504CD /* Base */,
 				F37277D4212203F500CC05DB /* en */,
 				F37277D5212204FC00CC05DB /* de */,
+				F3967AAD23315F16006C636F /* zh-Hans */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
