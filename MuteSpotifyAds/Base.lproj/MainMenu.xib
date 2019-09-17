@@ -83,6 +83,12 @@
                         <action selector="openSimonMeuselWebsite:" target="Voe-Tx-rLC" id="9SM-2J-gz9"/>
                     </connections>
                 </menuItem>
+                <menuItem title="⚠ Quit Spotify" id="Ruj-6m-HE0">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="quitWithSotify:" target="Voe-Tx-rLC" id="Anf-eQ-eP1"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="⊗ Quit" id="vrP-PM-sCp">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -90,7 +96,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="196" y="144"/>
+            <point key="canvasLocation" x="190" y="133"/>
         </menu>
     </objects>
 </document>

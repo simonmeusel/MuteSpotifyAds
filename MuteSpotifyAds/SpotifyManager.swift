@@ -19,6 +19,7 @@ class SpotifyManager: NSObject {
     var restartToSkipAdsEnabled = false
     var songLogPath: String? = nil
     var startSpotify = false
+    var quitSpotify = false
     
     /**
      * Volume before mute, between 0 and 100
@@ -108,7 +109,6 @@ class SpotifyManager: NSObject {
         process.launch()
         process.waitUntilExit()
     }
-    
     /**
      * Enables private Spotify session
      */
@@ -230,6 +230,11 @@ class SpotifyManager: NSObject {
                 self.isRestarting = false
             })
         })
+    }
+    
+    func closeSpotify() {
+        titleChangeHandler(.ad)
+        _ = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "quit")
     }
     
     /**
