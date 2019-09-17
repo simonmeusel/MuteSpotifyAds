@@ -236,6 +236,7 @@ class SpotifyManager: NSObject {
         titleChangeHandler(.ad)
         _ = runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "quit")
     }
+    
     /**
      * Runs the given apple script and passed logs to completion handler
      */
