@@ -15,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C2D71CA12379FBF200F94EBF /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		F31C1A0C20B94FF000015294 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
 		F321C45420B89BBF00C504CD /* MuteSpotifyAds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuteSpotifyAds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F321C45720B89BBF00C504CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +137,7 @@
 				Base,
 				de,
 				"zh-Hans",
+				tr,
 			);
 			mainGroup = F321C44B20B89BBF00C504CD;
 			productRefGroup = F321C45520B89BBF00C504CD /* Products */;
@@ -180,6 +182,7 @@
 				F37277D4212203F500CC05DB /* en */,
 				F37277D5212204FC00CC05DB /* de */,
 				F3967AAD23315F16006C636F /* zh-Hans */,
+				C2D71CA12379FBF200F94EBF /* tr */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
