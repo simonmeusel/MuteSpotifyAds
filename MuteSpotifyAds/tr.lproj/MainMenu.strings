@@ -1,0 +1,30 @@
+
+/* Class = "NSMenuItem"; title = "◎ Restart to skip ads"; ObjectID = "7pt-Ak-HDD"; */
+"7pt-Ak-HDD.title" = "◎ Reklamları geçmek için tekrar başlat";
+
+/* Class = "NSMenuItem"; title = "🐛 Report a bug"; ObjectID = "95E-eS-QXO"; */
+"95E-eS-QXO.title" = "🐛 Hata bildir";
+
+/* Class = "NSMenuItem"; title = "🔖 License"; ObjectID = "DTq-sR-yDf"; */
+"DTq-sR-yDf.title" = "🔖 Lisans";
+
+/* Class = "NSMenuItem"; title = "≡  Song log"; ObjectID = "GPc-bM-QPt"; */
+"GPc-bM-QPt.title" = "≡  Geçmiş şarkı kaydı";
+
+/* Class = "NSMenuItem"; title = "☂︎ MuteSpotifyAds"; ObjectID = "Qme-N6-cSD"; */
+"Qme-N6-cSD.title" = "☂︎ MuteSpotifyAds";
+
+/* Class = "NSMenuItem"; title = "⚠ Quit with Spotify"; ObjectID = "Ruj-6m-HE0"; */
+"Ruj-6m-HE0.title" = "⚠ Spotify ile beraber kapat";
+
+/* Class = "NSMenuItem"; title = "➤  Auto-start Spotify"; ObjectID = "Zxc-BN-6PQ"; */
+"Zxc-BN-6PQ.title" = "➤  Otomatik Spotify'i aç";
+
+/* Class = "NSMenuItem"; title = "∞  Private session"; ObjectID = "o3E-lf-Jhd"; */
+"o3E-lf-Jhd.title" = "∞  Gizli oturum";
+
+/* Class = "NSMenuItem"; title = "⊗  Quit"; ObjectID = "vrP-PM-sCp"; */
+"vrP-PM-sCp.title" = "⊗  Çıkış";
+
+/* Class = "NSMenuItem"; title = " •  Notifications"; ObjectID = "xcw-JU-8Ai"; */
+"xcw-JU-8Ai.title" = " •  Bildirimler";
