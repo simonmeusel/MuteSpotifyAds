@@ -112,6 +112,9 @@ Currently supported languages are:
 
 * English
 * German
+* Italian
+* Chinese
+* Turkish
 
 ## Alternatives
 
