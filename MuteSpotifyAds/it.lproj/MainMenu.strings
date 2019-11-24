@@ -9,22 +9,25 @@
 "DTq-sR-yDf.title" = "🔖 Licenza";
 
 /* Class = "NSMenuItem"; title = "≡  Song log"; ObjectID = "GPc-bM-QPt"; */
-"GPc-bM-QPt.title" = "≡  Log delle cazoni";
-
-/* Class = "NSMenuItem"; title = "© 2019 Simon Meusel"; ObjectID = "IUf-ND-5vk"; */
-"IUf-ND-5vk.title" = "© 2019 Simon Meusel";
+"GPc-bM-QPt.title" = "≡  Log delle canzoni";
 
 /* Class = "NSMenuItem"; title = "☂︎ MuteSpotifyAds"; ObjectID = "Qme-N6-cSD"; */
 "Qme-N6-cSD.title" = "☂︎ MuteSpotifyAds";
+
+/* Class = "NSMenuItem"; title = "⚠ Quit with Spotify"; ObjectID = "Ruj-6m-HE0"; */
+"Ruj-6m-HE0.title" = "⚠ Esci con Spotify";
 
 /* Class = "NSMenuItem"; title = "➤  Auto-start Spotify"; ObjectID = "Zxc-BN-6PQ"; */
 "Zxc-BN-6PQ.title" = "➤  Avvia automaticamente Spotify";
 
 /* Class = "NSMenuItem"; title = "∞  Private session"; ObjectID = "o3E-lf-Jhd"; */
-"o3E-lf-Jhd.title" = "∞  Sessione privata";
+"o3E-lf-Jhd.title" = "∞  Sessione Privata";
 
-/* Class = "NSMenuItem"; title = "⊗ Quit"; ObjectID = "vrP-PM-sCp"; */
-"vrP-PM-sCp.title" = "⊗ Esci";
+/* Class = "NSMenuItem"; title = " ©  Simon Meusel"; ObjectID = "rc4-2Q-6hz"; */
+"rc4-2Q-6hz.title" = " ©  Simon Meusel";
+
+/* Class = "NSMenuItem"; title = "⊗  Quit"; ObjectID = "vrP-PM-sCp"; */
+"vrP-PM-sCp.title" = "⊗  Esci";
 
 /* Class = "NSMenuItem"; title = " •  Notifications"; ObjectID = "xcw-JU-8Ai"; */
 "xcw-JU-8Ai.title" = " •  Notifiche";
