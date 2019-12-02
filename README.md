@@ -115,6 +115,7 @@ Currently supported languages are:
 * Italian
 * Chinese
 * Turkish
+* Spanish
 
 ## Alternatives
 
