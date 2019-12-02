@@ -1,33 +1,33 @@
 
 /* Class = "NSMenuItem"; title = "◎ Restart to skip ads"; ObjectID = "7pt-Ak-HDD"; */
-"7pt-Ak-HDD.title" = "◎ Reiniciar para omitir anuncios";
+"7pt-Ak-HDD.title" = "◎ Restart to skip ads";
 
 /* Class = "NSMenuItem"; title = "🐛 Report a bug"; ObjectID = "95E-eS-QXO"; */
-"95E-eS-QXO.title" = "🐛 Informar de un error";
+"95E-eS-QXO.title" = "🐛 Report a bug";
 
 /* Class = "NSMenuItem"; title = "🔖 License"; ObjectID = "DTq-sR-yDf"; */
-"DTq-sR-yDf.title" = "🔖 Licencia";
+"DTq-sR-yDf.title" = "🔖 License";
 
 /* Class = "NSMenuItem"; title = "≡  Song log"; ObjectID = "GPc-bM-QPt"; */
-"GPc-bM-QPt.title" = "≡  Historial de canciones";
+"GPc-bM-QPt.title" = "≡  Song log";
 
 /* Class = "NSMenuItem"; title = "☂︎ MuteSpotifyAds"; ObjectID = "Qme-N6-cSD"; */
 "Qme-N6-cSD.title" = "☂︎ MuteSpotifyAds";
 
 /* Class = "NSMenuItem"; title = "⚠ Quit with Spotify"; ObjectID = "Ruj-6m-HE0"; */
-"Ruj-6m-HE0.title" = "⚠ Salir con Spotify";
+"Ruj-6m-HE0.title" = "⚠ Quit with Spotify";
 
 /* Class = "NSMenuItem"; title = "➤  Auto-start Spotify"; ObjectID = "Zxc-BN-6PQ"; */
-"Zxc-BN-6PQ.title" = "➤  Inicio automatico de Spotify";
+"Zxc-BN-6PQ.title" = "➤  Auto-start Spotify";
 
 /* Class = "NSMenuItem"; title = "∞  Private session"; ObjectID = "o3E-lf-Jhd"; */
-"o3E-lf-Jhd.title" = "∞  Sesión privada";
+"o3E-lf-Jhd.title" = "∞  Private session";
 
 /* Class = "NSMenuItem"; title = " ©  Simon Meusel"; ObjectID = "rc4-2Q-6hz"; */
 "rc4-2Q-6hz.title" = " ©  Simon Meusel";
 
 /* Class = "NSMenuItem"; title = "⊗  Quit"; ObjectID = "vrP-PM-sCp"; */
-"vrP-PM-sCp.title" = "⊗  Salir";
+"vrP-PM-sCp.title" = "⊗  Quit";
 
 /* Class = "NSMenuItem"; title = " •  Notifications"; ObjectID = "xcw-JU-8Ai"; */
-"xcw-JU-8Ai.title" = " •  Notificaciones";
+"xcw-JU-8Ai.title" = " •  Notifications";

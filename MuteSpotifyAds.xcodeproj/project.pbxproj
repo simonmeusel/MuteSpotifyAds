@@ -24,6 +24,7 @@
 		F321C45C20B89BC100C504CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		F321C45E20B89BC100C504CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F321C45F20B89BC100C504CD /* MuteSpotifyAds.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MuteSpotifyAds.entitlements; sourceTree = "<group>"; };
+		F329D8472395B3F800EF42B6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		F336C09220BDA27E00C757DA /* SpotifyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyManager.swift; sourceTree = "<group>"; };
 		F336C09420BDA34200C757DA /* StatusBarTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarTitle.swift; sourceTree = "<group>"; };
 		F37277D4212203F500CC05DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
@@ -140,6 +141,7 @@
 				"zh-Hans",
 				tr,
 				it,
+				es,
 			);
 			mainGroup = F321C44B20B89BBF00C504CD;
 			productRefGroup = F321C45520B89BBF00C504CD /* Products */;
@@ -186,6 +188,7 @@
 				F3967AAD23315F16006C636F /* zh-Hans */,
 				C2D71CA12379FBF200F94EBF /* tr */,
 				DE08CCAF23858D24004F6616 /* it */,
+				F329D8472395B3F800EF42B6 /* es */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";

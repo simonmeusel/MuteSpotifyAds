@@ -110,12 +110,12 @@ You can also contribute by adding support for another language. To do so, clone 
 
 Currently supported languages are:
 
+* Chinese
 * English
 * German
 * Italian
-* Chinese
-* Turkish
 * Spanish
+* Turkish
 
 ## Alternatives
 
