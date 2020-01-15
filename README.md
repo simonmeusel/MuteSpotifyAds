@@ -47,7 +47,7 @@ If the Application does not work, follow the steps for enabling a endless privat
 
 ## Endless private Spotify session
 
-You can also use this application to enforce a endless private session. **This requires administrative privileges**. To enable them, do the following:
+You can also use this application to enforce a endless private session. **This requires you to grant this application additional priviledges**. To enable them, do the following:
 
 1. Go to `System Preferences` → `Security & Privacy` → `Privacy` tab → `Accessibility` → Enable the check mark next to this application. 
 2. Go to `System Preferences` → `Security & Privacy` → `Privacy` tab → `Automation` → Enable the check marks next to this application (for `Spotify` and `System Events`).
@@ -70,9 +70,6 @@ end tell
 ```
 
 ## How is it so efficient?
-
-> ⚠️ Because of a Spotify bug, pausing and playing an ad every 4 seconds is implemented. This requires polling, but only when ads actually play. This will be resolved when the Spotify bug gets fixed. See [#4](https://github.com/simonmeusel/MuteSpotifyAds/issues/4).
-> This Spotify bug has no effect when using the restart-spotify mode in v 1.5
 
 Whenever the track changes, the following file will get modified by Spotify:
 
@@ -99,8 +96,6 @@ tell application "Spotify" to set sound volume to ($VOLUME)
 ```
 
 Using those techniques, it uses only `0.4%` CPU when the track changes (rate: 5 seconds), and `0%` in idle. It has a energy impact of less than one tenth of Spotify when the track changes, and a energy impact of `0.0 - 0.1` in idle.
-
-This application does not use any `hacks`, its simply accesses Spotify's apple script API and look for file changes.
 
 ## Contributing
 
