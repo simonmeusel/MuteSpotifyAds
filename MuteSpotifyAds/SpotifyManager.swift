@@ -46,18 +46,39 @@ class SpotifyManager: NSObject {
             
             if self.startSpotify {
                 let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as! NSRunningApplication
-                if (app.bundleIdentifier == "com.spotify.client" && !self.isRestarting) {
-                    NSApplication.shared.terminate(self)
+                if (app.bundleIdentifier == "com.spotify.client") {
+                    self.handleSpotifyQuit()
                 }
             }
         })
+    }
+    
+    func handleSpotifyQuit() {
+        if (isRestarting) {
+            // Start plaing after Spotify got restarted
+            self.spotifyPlay()
+            if (isSpotifyPaused()) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                    self.handleSpotifyQuit()
+                })
+            } else {
+                self.titleChangeHandler(.noAd)
+                self.isRestarting = false
+            }
+        } else {
+            NSApplication.shared.terminate(self)
+        }
+    }
+    
+    func isSpotifyPaused() -> Bool {
+        return runAppleScript(script: SpotifyManager.appleScriptSpotifyPrefix + "(get player state)") == "paused"
     }
     
     func startWatchingForFileChanges() {
         if startSpotify {
             DispatchQueue.global(qos: .default).async {
                 self.startSpotify(foreground: true)
-                _ = self.trackChanged()
+                _ = self.handleTrackChanged()
             }
         }
         
@@ -85,7 +106,7 @@ class SpotifyManager: NSObject {
             
             DispatchQueue.global(qos: .default).async {
                 _ = Unmanaged<SpotifyManager>.fromOpaque(
-                    info!).takeUnretainedValue().trackChanged()
+                    info!).takeUnretainedValue().handleTrackChanged()
             }
         }, &context, files as CFArray, FSEventStreamEventId(kFSEventStreamEventIdSinceNow), 0, UInt32(kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagFileEvents))
         
@@ -146,11 +167,11 @@ class SpotifyManager: NSObject {
     }
     
     /**
-     * Checks for ad
+     * Checks for a currently playing ad
      *
      * Returns true if spotify got muted or unmuted, false otherwise
      */
-    func trackChanged() -> Bool {
+    func handleTrackChanged() -> Bool {
         var changed = false
         
         if isSpotifyAdPlaying() {
@@ -238,7 +259,7 @@ class SpotifyManager: NSObject {
     }
     
     /**
-     * Runs the given apple script and passed logs to completion handler
+     * Runs the given apple script and passes logs to completion handler
      */
     func runAppleScript(script: String) -> String {
         let process = Process()
