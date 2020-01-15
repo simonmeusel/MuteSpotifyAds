@@ -112,24 +112,6 @@ Currently supported languages are:
 * Spanish
 * Turkish
 
-## Alternatives
-
-### Linux
-
-I you want this functionality on Linux, I have found ***but not tested!*** the following program:
-https://github.com/SecUpwN/Spotify-AdKiller
-
-### Windows
-
-I you want this functionality on Windows, I have found ***but not tested!*** the following program:
-https://github.com/Xeroday/Spotify-Ad-Blocker/
-
-### macOS
-
-This application is an alternative to [Spotifree](https://github.com/ArtemGordinsky/Spotifree). [Spotifree](https://github.com/ArtemGordinsky/Spotifree) uses constant polling every `0.3` seconds. This results in a constant CPU drain of around `4%` and a energy usage of about one fourth of the one from Spotify.
-
-Although I created this application and had the idea to use apple script and file watching on my own, looking at the [Spotifree](https://github.com/ArtemGordinsky/Spotifree) source code gave me the idea of using the Spotify url instead of the songs popularity (because the popularity is always 0 for ads).
-
 ## Thanks
 
 Thanks to [Carlo Federico Vescovo](https://github.com/cfvescovo) for the restart-spotify feature, the auto-start option and help with the documentation!
